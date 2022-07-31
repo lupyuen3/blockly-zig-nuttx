@@ -1,3 +1,25 @@
+![Visual Programming for Zig with NuttX Sensors](https://lupyuen.github.io/images/sensor-visual.jpg)
+
+# Visual Programming for Zig with NuttX Sensors
+
+Read the article...
+
+-   ["Read NuttX Sensor Data with Zig"](https://lupyuen.github.io/articles/sensor)
+
+Can we use Scratch / [Blockly](https://github.com/google/blockly) to code Zig programs, the drag-n-drop way?
+
+Let's create a Visual Programming Tool for Zig that will generate IoT Sensor Apps with Apache NuttX RTOS.
+
+_Why limit to IoT Sensor Apps?_
+
+-   Types are simpler: Only floating-point numbers will be supported, no strings needed
+
+-   Blockly is Typeless. With Zig we can use Type Inference to deduce the missing Struct Types
+
+-   Make it easier to experiment with various IoT Sensors: Temperature, Humidity, Air Pressure, ...
+
+TODO
+
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 
 Google's Blockly is a library that adds a visual code editor to web and mobile apps. The Blockly editor uses interlocking, graphical blocks to represent code concepts like variables, logical expressions, loops, and more. It allows users to apply programming principles without having to worry about syntax or the intimidation of a blinking cursor on the command line.  All code is free and open source.
