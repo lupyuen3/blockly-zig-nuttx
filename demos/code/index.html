@@ -4,16 +4,53 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google" value="notranslate">
-  <title>Blockly Demo:</title>
+  <title>Zig Blockly with NuttX</title>
+
+  <!--  Load Blockly Stylesheet and our override  -->
   <link rel="stylesheet" href="style.css">
   <script src="/storage.js"></script>
+
+  <!--  Load Blockly and Google Closure  -->
   <script src="../../blockly_compressed.js"></script>
+
+  <!--  Load Messages  -->
+  <script src="../../msg/messages.js"></script>
+
+  <!--  Load Blocks  -->
   <script src="../../blocks_compressed.js"></script>
+
+  <!--  Load Code Generators  -->
   <script src="../../javascript_compressed.js"></script>
   <script src="../../python_compressed.js"></script>
   <script src="../../php_compressed.js"></script>
   <script src="../../lua_compressed.js"></script>
   <script src="../../dart_compressed.js"></script>
+
+  <!--  Load Zig Code Generator  -->
+  <!-- <script src="../../generators/zig.js"></script> -->
+
+  <!--  Load Zig Blocks and Zig Block Code Generators  -->
+  <!-- <script src="../../generators/zig/zig_blocks.js"></script>
+  <script src="../../generators/zig/zig_functions.js"></script>
+  <script src="../../generators/zig/zig_coap.js"></script>
+  <script src="../../generators/zig/app_blocks.js"></script>
+  <script src="../../generators/zig/app_code.js"></script>
+  <script src="../../generators/zig/widgets_code.js"></script>
+  <script src="../../generators/zig/widgets_blocks.js"></script>
+  <script src="../../generators/zig/widgets_category.js"></script> -->
+
+  <!--  Load Zig Functions. TODO: Package into zig_compressed.js  -->
+  <!-- <script src="../../generators/zig/colour.js"></script>
+  <script src="../../generators/zig/lists.js"></script>
+  <script src="../../generators/zig/logic.js"></script>
+  <script src="../../generators/zig/loops.js"></script>
+  <script src="../../generators/zig/math.js"></script>
+  <script src="../../generators/zig/procedures.js"></script>
+  <script src="../../generators/zig/text.js"></script>
+  <script src="../../generators/zig/variables.js"></script>  
+  <script src="../../generators/zig/variables_dynamic.js"></script> -->
+  <!--  TODO: End  -->
+
   <script src="code.js"></script>
 </head>
 <body>
@@ -35,6 +72,8 @@
         <table width="100%">
           <tr id="tabRow" height="1em">
             <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_zig" class="taboff tab_collapse">Zig</td>
             <td class="tabmin tab_collapse">&nbsp;</td>
             <td id="tab_javascript" class="taboff tab_collapse">JavaScript</td>
             <td class="tabmin tab_collapse">&nbsp;</td>
@@ -74,6 +113,7 @@
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
+  <pre id="content_zig" class="content prettyprint lang-zig"></pre>
   <pre id="content_javascript" class="content prettyprint lang-js"></pre>
   <pre id="content_python" class="content prettyprint lang-py"></pre>
   <pre id="content_php" class="content prettyprint lang-php"></pre>
