@@ -56,7 +56,9 @@ We'll see the Zig Tab like this...
 
 # Zig Code Generator
 
-TODO
+Blockly comes bundled with Code Generators for JavaScript, Python, Dart, ...
+
+Let's create a Code Generator for Zig.
 
 Copy [generators/dart.js](generators/dart.js) to [generators/zig.js](generators/dart.js)
 
@@ -83,27 +85,69 @@ Change all `Dart` to `Zig`, preserve case.
 
 [(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/commit/efe185d6cac4306dcdc6b6a5f261b331bb992976)
 
-Add the Zig Code Generator to index.html...
+Load the Zig Code Generator in [demos/code/index.html](demos/code/index.html)...
 
-TODO
+```html
+<!--  Load Zig Code Generator  -->
+<script src="../../zig_compressed.js"></script>
+```
 
-Enable the Zig Code Generator in code.js...
+[(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/pull/1/files#diff-dcf2ffe98d7d8b4a0dd7b9f769557dbe8c9e0e726236ef229def25c956a43d8f)
 
-TODO
+Enable the Zig Code Generator in [demos/code/code.js](demos/code/code.js)...
 
-Add the dependencies...
+```javascript
+// Inserted `zig`...
+Code.TABS_ = [
+  'blocks', 'zig', 'javascript', 'php', 'python', 'dart', 'lua', 'xml', 'json'
+];
+...
+// Inserted `Zig`...
+Code.TABS_DISPLAY_ = [
+  'Blocks', 'Zig', 'JavaScript', 'PHP', 'Python', 'Dart', 'Lua', 'XML', 'JSON'
+];
+...
+Code.renderContent = function() {
+  ...
+  } else if (content.id === 'content_json') {
+    var jsonTextarea = document.getElementById('content_json');
+    jsonTextarea.value = JSON.stringify(
+        Blockly.serialization.workspaces.save(Code.workspace), null, 2);
+    jsonTextarea.focus();
+  // Inserted this...
+  } else if (content.id == 'content_zig') {
+    Code.attemptCodeGeneration(Blockly.Zig);
+```
 
-TODO
+[(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/pull/1/files#diff-d72873b861dee958e5d443c919726dd856de594bd56b1e73d8948a7719163553)
 
-Rebuild Blockly with the Zig Code Generator...
+Let's build our Zig Code Generator.
+
+# Build Blocly
+
+To build Blockly with the Zig Code Generator...
 
 ```bash
 git clone --recursive https://github.com/lupyuen3/blockly-zig-nuttx
 cd blockly-zig-nuttx
 npm install
+
+## Run these steps when we change the Zig Code Generator
 npm run build
 npm run package
+npm run publish
+
+## When prompted "Is this the correct branch?",
+## press N
 ```
+
+This compiles and updates the Zig Code Generator in [zig_compressed.js](zig_compressed.js)
+
+The Zig Tab now shows the generated code in Dart (because we copied the Dart Code Generator)...
+
+[lupyuen3.github.io/blockly-zig-nuttx/demos/code/](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
+Let's generate some Zig code.
 
 # TODO
 
