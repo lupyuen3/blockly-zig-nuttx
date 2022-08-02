@@ -5,17 +5,17 @@
  */
 
 /**
- * @fileoverview Generating Dart for dynamic variable blocks.
+ * @fileoverview Generating Zig for dynamic variable blocks.
  */
 'use strict';
 
-goog.module('Blockly.Dart.variablesDynamic');
+goog.module('Blockly.Zig.variablesDynamic');
 
-const Dart = goog.require('Blockly.Dart');
+const Zig = goog.require('Blockly.Zig');
 /** @suppress {extraRequire} */
-goog.require('Blockly.Dart.variables');
+goog.require('Blockly.Zig.variables');
 
 
-// Dart is dynamically typed.
-Dart['variables_get_dynamic'] = Dart['variables_get'];
-Dart['variables_set_dynamic'] = Dart['variables_set'];
+// Zig is dynamically typed.
+Zig['variables_get_dynamic'] = Zig['variables_get'];
+Zig['variables_set_dynamic'] = Zig['variables_set'];

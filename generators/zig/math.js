@@ -5,83 +5,83 @@
  */
 
 /**
- * @fileoverview Generating Dart for math blocks.
+ * @fileoverview Generating Zig for math blocks.
  */
 'use strict';
 
-goog.module('Blockly.Dart.math');
+goog.module('Blockly.Zig.math');
 
-const Dart = goog.require('Blockly.Dart');
+const Zig = goog.require('Blockly.Zig');
 const {NameType} = goog.require('Blockly.Names');
 
 
-Dart.addReservedWords('Math');
+Zig.addReservedWords('Math');
 
-Dart['math_number'] = function(block) {
+Zig['math_number'] = function(block) {
   // Numeric value.
   let code = Number(block.getFieldValue('NUM'));
   let order;
   if (code === Infinity) {
     code = 'double.infinity';
-    order = Dart.ORDER_UNARY_POSTFIX;
+    order = Zig.ORDER_UNARY_POSTFIX;
   } else if (code === -Infinity) {
     code = '-double.infinity';
-    order = Dart.ORDER_UNARY_PREFIX;
+    order = Zig.ORDER_UNARY_PREFIX;
   } else {
-    // -4.abs() returns -4 in Dart due to strange order of operation choices.
+    // -4.abs() returns -4 in Zig due to strange order of operation choices.
     // -4 is actually an operator and a number.  Reflect this in the order.
-    order = code < 0 ? Dart.ORDER_UNARY_PREFIX : Dart.ORDER_ATOMIC;
+    order = code < 0 ? Zig.ORDER_UNARY_PREFIX : Zig.ORDER_ATOMIC;
   }
   return [code, order];
 };
 
-Dart['math_arithmetic'] = function(block) {
+Zig['math_arithmetic'] = function(block) {
   // Basic arithmetic operators, and power.
   const OPERATORS = {
-    'ADD': [' + ', Dart.ORDER_ADDITIVE],
-    'MINUS': [' - ', Dart.ORDER_ADDITIVE],
-    'MULTIPLY': [' * ', Dart.ORDER_MULTIPLICATIVE],
-    'DIVIDE': [' / ', Dart.ORDER_MULTIPLICATIVE],
-    'POWER': [null, Dart.ORDER_NONE],  // Handle power separately.
+    'ADD': [' + ', Zig.ORDER_ADDITIVE],
+    'MINUS': [' - ', Zig.ORDER_ADDITIVE],
+    'MULTIPLY': [' * ', Zig.ORDER_MULTIPLICATIVE],
+    'DIVIDE': [' / ', Zig.ORDER_MULTIPLICATIVE],
+    'POWER': [null, Zig.ORDER_NONE],  // Handle power separately.
   };
   const tuple = OPERATORS[block.getFieldValue('OP')];
   const operator = tuple[0];
   const order = tuple[1];
-  const argument0 = Dart.valueToCode(block, 'A', order) || '0';
-  const argument1 = Dart.valueToCode(block, 'B', order) || '0';
+  const argument0 = Zig.valueToCode(block, 'A', order) || '0';
+  const argument1 = Zig.valueToCode(block, 'B', order) || '0';
   let code;
-  // Power in Dart requires a special case since it has no operator.
+  // Power in Zig requires a special case since it has no operator.
   if (!operator) {
-    Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
+    Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
     code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
-    return [code, Dart.ORDER_UNARY_POSTFIX];
+    return [code, Zig.ORDER_UNARY_POSTFIX];
   }
   code = argument0 + operator + argument1;
   return [code, order];
 };
 
-Dart['math_single'] = function(block) {
+Zig['math_single'] = function(block) {
   // Math operators with single operand.
   const operator = block.getFieldValue('OP');
   let code;
   let arg;
   if (operator === 'NEG') {
     // Negation is a special case given its different operator precedence.
-    arg = Dart.valueToCode(block, 'NUM', Dart.ORDER_UNARY_PREFIX) || '0';
+    arg = Zig.valueToCode(block, 'NUM', Zig.ORDER_UNARY_PREFIX) || '0';
     if (arg[0] === '-') {
-      // --3 is not legal in Dart.
+      // --3 is not legal in Zig.
       arg = ' ' + arg;
     }
     code = '-' + arg;
-    return [code, Dart.ORDER_UNARY_PREFIX];
+    return [code, Zig.ORDER_UNARY_PREFIX];
   }
-  Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
+  Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
   if (operator === 'ABS' || operator.substring(0, 5) === 'ROUND') {
-    arg = Dart.valueToCode(block, 'NUM', Dart.ORDER_UNARY_POSTFIX) || '0';
+    arg = Zig.valueToCode(block, 'NUM', Zig.ORDER_UNARY_POSTFIX) || '0';
   } else if (operator === 'SIN' || operator === 'COS' || operator === 'TAN') {
-    arg = Dart.valueToCode(block, 'NUM', Dart.ORDER_MULTIPLICATIVE) || '0';
+    arg = Zig.valueToCode(block, 'NUM', Zig.ORDER_MULTIPLICATIVE) || '0';
   } else {
-    arg = Dart.valueToCode(block, 'NUM', Dart.ORDER_NONE) || '0';
+    arg = Zig.valueToCode(block, 'NUM', Zig.ORDER_NONE) || '0';
   }
   // First, handle cases which generate values that don't need parentheses
   // wrapping the code.
@@ -121,7 +121,7 @@ Dart['math_single'] = function(block) {
       break;
   }
   if (code) {
-    return [code, Dart.ORDER_UNARY_POSTFIX];
+    return [code, Zig.ORDER_UNARY_POSTFIX];
   }
   // Second, handle cases which generate values that may need parentheses
   // wrapping the code.
@@ -141,49 +141,49 @@ Dart['math_single'] = function(block) {
     default:
       throw Error('Unknown math operator: ' + operator);
   }
-  return [code, Dart.ORDER_MULTIPLICATIVE];
+  return [code, Zig.ORDER_MULTIPLICATIVE];
 };
 
-Dart['math_constant'] = function(block) {
+Zig['math_constant'] = function(block) {
   // Constants: PI, E, the Golden Ratio, sqrt(2), 1/sqrt(2), INFINITY.
   const CONSTANTS = {
-    'PI': ['Math.pi', Dart.ORDER_UNARY_POSTFIX],
-    'E': ['Math.e', Dart.ORDER_UNARY_POSTFIX],
-    'GOLDEN_RATIO': ['(1 + Math.sqrt(5)) / 2', Dart.ORDER_MULTIPLICATIVE],
-    'SQRT2': ['Math.sqrt2', Dart.ORDER_UNARY_POSTFIX],
-    'SQRT1_2': ['Math.sqrt1_2', Dart.ORDER_UNARY_POSTFIX],
-    'INFINITY': ['double.infinity', Dart.ORDER_ATOMIC],
+    'PI': ['Math.pi', Zig.ORDER_UNARY_POSTFIX],
+    'E': ['Math.e', Zig.ORDER_UNARY_POSTFIX],
+    'GOLDEN_RATIO': ['(1 + Math.sqrt(5)) / 2', Zig.ORDER_MULTIPLICATIVE],
+    'SQRT2': ['Math.sqrt2', Zig.ORDER_UNARY_POSTFIX],
+    'SQRT1_2': ['Math.sqrt1_2', Zig.ORDER_UNARY_POSTFIX],
+    'INFINITY': ['double.infinity', Zig.ORDER_ATOMIC],
   };
   const constant = block.getFieldValue('CONSTANT');
   if (constant !== 'INFINITY') {
-    Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
+    Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
   }
   return CONSTANTS[constant];
 };
 
-Dart['math_number_property'] = function(block) {
+Zig['math_number_property'] = function(block) {
   // Check if a number is even, odd, prime, whole, positive, or negative
   // or if it is divisible by certain number. Returns true or false.
   const PROPERTIES = {
-    'EVEN': [' % 2 == 0', Dart.ORDER_MULTIPLICATIVE, Dart.ORDER_EQUALITY],
-    'ODD': [' % 2 == 1', Dart.ORDER_MULTIPLICATIVE, Dart.ORDER_EQUALITY],
-    'WHOLE': [' % 1 == 0', Dart.ORDER_MULTIPLICATIVE, Dart.ORDER_EQUALITY],
-    'POSITIVE': [' > 0', Dart.ORDER_RELATIONAL, Dart.ORDER_RELATIONAL],
-    'NEGATIVE': [' < 0', Dart.ORDER_RELATIONAL, Dart.ORDER_RELATIONAL],
-    'DIVISIBLE_BY': [null, Dart.ORDER_MULTIPLICATIVE, Dart.ORDER_EQUALITY],
-    'PRIME': [null, Dart.ORDER_NONE, Dart.ORDER_UNARY_POSTFIX],
+    'EVEN': [' % 2 == 0', Zig.ORDER_MULTIPLICATIVE, Zig.ORDER_EQUALITY],
+    'ODD': [' % 2 == 1', Zig.ORDER_MULTIPLICATIVE, Zig.ORDER_EQUALITY],
+    'WHOLE': [' % 1 == 0', Zig.ORDER_MULTIPLICATIVE, Zig.ORDER_EQUALITY],
+    'POSITIVE': [' > 0', Zig.ORDER_RELATIONAL, Zig.ORDER_RELATIONAL],
+    'NEGATIVE': [' < 0', Zig.ORDER_RELATIONAL, Zig.ORDER_RELATIONAL],
+    'DIVISIBLE_BY': [null, Zig.ORDER_MULTIPLICATIVE, Zig.ORDER_EQUALITY],
+    'PRIME': [null, Zig.ORDER_NONE, Zig.ORDER_UNARY_POSTFIX],
   };
   const dropdownProperty = block.getFieldValue('PROPERTY');
   const [suffix, inputOrder, outputOrder] = PROPERTIES[dropdownProperty];
-  const numberToCheck = Dart.valueToCode(block, 'NUMBER_TO_CHECK',
+  const numberToCheck = Zig.valueToCode(block, 'NUMBER_TO_CHECK',
       inputOrder) || '0';
   let code;
   if (dropdownProperty === 'PRIME') {
     // Prime is a special case as it is not a one-liner test.
-    Dart.definitions_['import_dart_math'] =
-        'import \'dart:math\' as Math;';
-    const functionName = Dart.provideFunction_('math_isPrime', `
-bool ${Dart.FUNCTION_NAME_PLACEHOLDER_}(n) {
+    Zig.definitions_['import_zig_math'] =
+        'import \'zig:math\' as Math;';
+    const functionName = Zig.provideFunction_('math_isPrime', `
+bool ${Zig.FUNCTION_NAME_PLACEHOLDER_}(n) {
   // https://en.wikipedia.org/wiki/Primality_test#Naive_methods
   if (n == 2 || n == 3) {
     return true;
@@ -204,10 +204,10 @@ bool ${Dart.FUNCTION_NAME_PLACEHOLDER_}(n) {
 `);
     code = functionName + '(' + numberToCheck + ')';
   } else if (dropdownProperty === 'DIVISIBLE_BY') {
-    const divisor = Dart.valueToCode(block, 'DIVISOR',
-        Dart.ORDER_MULTIPLICATIVE) || '0';
+    const divisor = Zig.valueToCode(block, 'DIVISOR',
+        Zig.ORDER_MULTIPLICATIVE) || '0';
     if (divisor === '0') {
-      return ['false', Dart.ORDER_ATOMIC];
+      return ['false', Zig.ORDER_ATOMIC];
     }
     code = numberToCheck + ' % ' + divisor + ' == 0';
   } else {
@@ -216,30 +216,30 @@ bool ${Dart.FUNCTION_NAME_PLACEHOLDER_}(n) {
   return [code, outputOrder];
 };
 
-Dart['math_change'] = function(block) {
+Zig['math_change'] = function(block) {
   // Add to a variable in place.
   const argument0 =
-      Dart.valueToCode(block, 'DELTA', Dart.ORDER_ADDITIVE) || '0';
+      Zig.valueToCode(block, 'DELTA', Zig.ORDER_ADDITIVE) || '0';
   const varName =
-      Dart.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
+      Zig.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
   return varName + ' = (' + varName + ' is num ? ' + varName + ' : 0) + ' +
       argument0 + ';\n';
 };
 
 // Rounding functions have a single operand.
-Dart['math_round'] = Dart['math_single'];
+Zig['math_round'] = Zig['math_single'];
 // Trigonometry functions have a single operand.
-Dart['math_trig'] = Dart['math_single'];
+Zig['math_trig'] = Zig['math_single'];
 
-Dart['math_on_list'] = function(block) {
+Zig['math_on_list'] = function(block) {
   // Math functions for lists.
   const func = block.getFieldValue('OP');
-  const list = Dart.valueToCode(block, 'LIST', Dart.ORDER_NONE) || '[]';
+  const list = Zig.valueToCode(block, 'LIST', Zig.ORDER_NONE) || '[]';
   let code;
   switch (func) {
     case 'SUM': {
-      const functionName = Dart.provideFunction_('math_sum', `
-num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
+      const functionName = Zig.provideFunction_('math_sum', `
+num ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
   num sumVal = 0;
   myList.forEach((num entry) {sumVal += entry;});
   return sumVal;
@@ -249,9 +249,9 @@ num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
       break;
     }
     case 'MIN': {
-      Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-      const functionName = Dart.provideFunction_('math_min', `
-num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
+      Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+      const functionName = Zig.provideFunction_('math_min', `
+num ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
   if (myList.isEmpty) return null;
   num minVal = myList[0];
   myList.forEach((num entry) {minVal = Math.min(minVal, entry);});
@@ -262,9 +262,9 @@ num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
       break;
     }
     case 'MAX': {
-      Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-      const functionName = Dart.provideFunction_('math_max', `
-num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
+      Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+      const functionName = Zig.provideFunction_('math_max', `
+num ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
   if (myList.isEmpty) return null;
   num maxVal = myList[0];
   myList.forEach((num entry) {maxVal = Math.max(maxVal, entry);});
@@ -277,8 +277,8 @@ num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List<num> myList) {
     case 'AVERAGE': {
       // This operation exclude null and values that are not int or float:
       //   math_mean([null,null,"aString",1,9]) -> 5.0
-      const functionName = Dart.provideFunction_('math_mean', `
-num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
+      const functionName = Zig.provideFunction_('math_mean', `
+num ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
   // First filter list for numbers only.
   List localList = new List.from(myList);
   localList.removeWhere((a) => a is! num);
@@ -292,8 +292,8 @@ num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
       break;
     }
     case 'MEDIAN': {
-      const functionName = Dart.provideFunction_('math_median', `
-num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
+      const functionName = Zig.provideFunction_('math_median', `
+num ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
   // First filter list for numbers only, then sort, then return middle value
   // or the average of two middle values if list has an even number of elements.
   List localList = new List.from(myList);
@@ -312,12 +312,12 @@ num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
       break;
     }
     case 'MODE': {
-      Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
+      Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
       // As a list of numbers can contain more than one mode,
       // the returned result is provided as an array.
       // Mode of [3, 'x', 'x', 1, 1, 2, '3'] -> ['x', 1]
-      const functionName = Dart.provideFunction_('math_modes', `
-List ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List values) {
+      const functionName = Zig.provideFunction_('math_modes', `
+List ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List values) {
   List modes = [];
   List counts = [];
   int maxCount = 0;
@@ -350,9 +350,9 @@ List ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List values) {
       break;
     }
     case 'STD_DEV': {
-      Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-      const functionName = Dart.provideFunction_('math_standard_deviation', `
-num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
+      Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+      const functionName = Zig.provideFunction_('math_standard_deviation', `
+num ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
   // First filter list for numbers only.
   List numbers = new List.from(myList);
   numbers.removeWhere((a) => a is! num);
@@ -370,9 +370,9 @@ num ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
       break;
     }
     case 'RANDOM': {
-      Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-      const functionName = Dart.provideFunction_('math_random_item', `
-dynamic ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
+      Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+      const functionName = Zig.provideFunction_('math_random_item', `
+dynamic ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
   int x = new Math.Random().nextInt(myList.length);
   return myList[x];
 }
@@ -383,38 +383,38 @@ dynamic ${Dart.FUNCTION_NAME_PLACEHOLDER_}(List myList) {
     default:
       throw Error('Unknown operator: ' + func);
   }
-  return [code, Dart.ORDER_UNARY_POSTFIX];
+  return [code, Zig.ORDER_UNARY_POSTFIX];
 };
 
-Dart['math_modulo'] = function(block) {
+Zig['math_modulo'] = function(block) {
   // Remainder computation.
   const argument0 =
-      Dart.valueToCode(block, 'DIVIDEND', Dart.ORDER_MULTIPLICATIVE) || '0';
+      Zig.valueToCode(block, 'DIVIDEND', Zig.ORDER_MULTIPLICATIVE) || '0';
   const argument1 =
-      Dart.valueToCode(block, 'DIVISOR', Dart.ORDER_MULTIPLICATIVE) || '0';
+      Zig.valueToCode(block, 'DIVISOR', Zig.ORDER_MULTIPLICATIVE) || '0';
   const code = argument0 + ' % ' + argument1;
-  return [code, Dart.ORDER_MULTIPLICATIVE];
+  return [code, Zig.ORDER_MULTIPLICATIVE];
 };
 
-Dart['math_constrain'] = function(block) {
+Zig['math_constrain'] = function(block) {
   // Constrain a number between two limits.
-  Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-  const argument0 = Dart.valueToCode(block, 'VALUE', Dart.ORDER_NONE) || '0';
-  const argument1 = Dart.valueToCode(block, 'LOW', Dart.ORDER_NONE) || '0';
+  Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+  const argument0 = Zig.valueToCode(block, 'VALUE', Zig.ORDER_NONE) || '0';
+  const argument1 = Zig.valueToCode(block, 'LOW', Zig.ORDER_NONE) || '0';
   const argument2 =
-      Dart.valueToCode(block, 'HIGH', Dart.ORDER_NONE) || 'double.infinity';
+      Zig.valueToCode(block, 'HIGH', Zig.ORDER_NONE) || 'double.infinity';
   const code = 'Math.min(Math.max(' + argument0 + ', ' + argument1 + '), ' +
       argument2 + ')';
-  return [code, Dart.ORDER_UNARY_POSTFIX];
+  return [code, Zig.ORDER_UNARY_POSTFIX];
 };
 
-Dart['math_random_int'] = function(block) {
+Zig['math_random_int'] = function(block) {
   // Random integer between [X] and [Y].
-  Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-  const argument0 = Dart.valueToCode(block, 'FROM', Dart.ORDER_NONE) || '0';
-  const argument1 = Dart.valueToCode(block, 'TO', Dart.ORDER_NONE) || '0';
-  const functionName = Dart.provideFunction_('math_random_int', `
-int ${Dart.FUNCTION_NAME_PLACEHOLDER_}(num a, num b) {
+  Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+  const argument0 = Zig.valueToCode(block, 'FROM', Zig.ORDER_NONE) || '0';
+  const argument1 = Zig.valueToCode(block, 'TO', Zig.ORDER_NONE) || '0';
+  const functionName = Zig.provideFunction_('math_random_int', `
+int ${Zig.FUNCTION_NAME_PLACEHOLDER_}(num a, num b) {
   if (a > b) {
     // Swap a and b to ensure a is smaller.
     num c = a;
@@ -425,22 +425,22 @@ int ${Dart.FUNCTION_NAME_PLACEHOLDER_}(num a, num b) {
 }
 `);
   const code = functionName + '(' + argument0 + ', ' + argument1 + ')';
-  return [code, Dart.ORDER_UNARY_POSTFIX];
+  return [code, Zig.ORDER_UNARY_POSTFIX];
 };
 
-Dart['math_random_float'] = function(block) {
+Zig['math_random_float'] = function(block) {
   // Random fraction between 0 and 1.
-  Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-  return ['new Math.Random().nextDouble()', Dart.ORDER_UNARY_POSTFIX];
+  Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+  return ['new Math.Random().nextDouble()', Zig.ORDER_UNARY_POSTFIX];
 };
 
-Dart['math_atan2'] = function(block) {
+Zig['math_atan2'] = function(block) {
   // Arctangent of point (X, Y) in degrees from -180 to 180.
-  Dart.definitions_['import_dart_math'] = 'import \'dart:math\' as Math;';
-  const argument0 = Dart.valueToCode(block, 'X', Dart.ORDER_NONE) || '0';
-  const argument1 = Dart.valueToCode(block, 'Y', Dart.ORDER_NONE) || '0';
+  Zig.definitions_['import_zig_math'] = 'import \'zig:math\' as Math;';
+  const argument0 = Zig.valueToCode(block, 'X', Zig.ORDER_NONE) || '0';
+  const argument1 = Zig.valueToCode(block, 'Y', Zig.ORDER_NONE) || '0';
   return [
     'Math.atan2(' + argument1 + ', ' + argument0 + ') / Math.pi * 180',
-    Dart.ORDER_MULTIPLICATIVE
+    Zig.ORDER_MULTIPLICATIVE
   ];
 };

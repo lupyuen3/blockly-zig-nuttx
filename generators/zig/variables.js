@@ -5,28 +5,28 @@
  */
 
 /**
- * @fileoverview Generating Dart for variable blocks.
+ * @fileoverview Generating Zig for variable blocks.
  */
 'use strict';
 
-goog.module('Blockly.Dart.variables');
+goog.module('Blockly.Zig.variables');
 
-const Dart = goog.require('Blockly.Dart');
+const Zig = goog.require('Blockly.Zig');
 const {NameType} = goog.require('Blockly.Names');
 
 
-Dart['variables_get'] = function(block) {
+Zig['variables_get'] = function(block) {
   // Variable getter.
   const code =
-      Dart.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
-  return [code, Dart.ORDER_ATOMIC];
+      Zig.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
+  return [code, Zig.ORDER_ATOMIC];
 };
 
-Dart['variables_set'] = function(block) {
+Zig['variables_set'] = function(block) {
   // Variable setter.
   const argument0 =
-      Dart.valueToCode(block, 'VALUE', Dart.ORDER_ASSIGNMENT) || '0';
+      Zig.valueToCode(block, 'VALUE', Zig.ORDER_ASSIGNMENT) || '0';
   const varName =
-      Dart.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
+      Zig.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
   return varName + ' = ' + argument0 + ';\n';
 };

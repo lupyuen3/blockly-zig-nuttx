@@ -5,21 +5,21 @@
  */
 
 /**
- * @fileoverview Complete helper functions for generating Dart for
- *     blocks.  This is the entrypoint for dart_compressed.js.
+ * @fileoverview Complete helper functions for generating Zig for
+ *     blocks.  This is the entrypoint for zig_compressed.js.
  * @suppress {extraRequire}
  */
 'use strict';
 
-goog.module('Blockly.Dart.all');
+goog.module('Blockly.Zig.all');
 
-goog.require('Blockly.Dart.colour');
-goog.require('Blockly.Dart.lists');
-goog.require('Blockly.Dart.logic');
-goog.require('Blockly.Dart.loops');
-goog.require('Blockly.Dart.math');
-goog.require('Blockly.Dart.procedures');
-goog.require('Blockly.Dart.texts');
-goog.require('Blockly.Dart.variables');
-goog.require('Blockly.Dart.variablesDynamic');
+goog.require('Blockly.Zig.colour');
+goog.require('Blockly.Zig.lists');
+goog.require('Blockly.Zig.logic');
+goog.require('Blockly.Zig.loops');
+goog.require('Blockly.Zig.math');
+goog.require('Blockly.Zig.procedures');
+goog.require('Blockly.Zig.texts');
+goog.require('Blockly.Zig.variables');
+goog.require('Blockly.Zig.variablesDynamic');
 
