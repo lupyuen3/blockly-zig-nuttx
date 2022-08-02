@@ -18,6 +18,44 @@ _Why limit to IoT Sensor Apps?_
 
 -   Make it easier to experiment with various IoT Sensors: Temperature, Humidity, Air Pressure, ...
 
+Let's customise Blockly to generate Zig code for Apache NuttX RTOS...
+
+# Add a Zig Tab
+
+Blockly is bundled with a list of Demos...
+
+[lupyuen3.github.io/blockly-zig-nuttx/demos/](https://lupyuen3.github.io/blockly-zig-nuttx/demos/)
+
+There's a Code Generation Demo that demos the Blockly code generation for JavaScript, Python, Dart, ...
+
+[lupyuen3.github.io/blockly-zig-nuttx/demos/code/](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
+Let's add a tab that will show the generated code for Zig: [demos/code/index.html](demos/code/index.html)
+
+```html
+<!--  Inserted this to Load Messages: (Not sure why)  -->
+<script src="../../msg/messages.js"></script>
+...
+<tr id="tabRow" height="1em">
+  <td id="tab_blocks" class="tabon">...</td>
+  <td class="tabmin tab_collapse">&nbsp;</td>
+  <!-- Inserted these two lines: -->
+  <td id="tab_zig" class="taboff tab_collapse">Zig</td>
+  <td class="tabmin tab_collapse">&nbsp;</td>
+...
+<div id="content_blocks" class="content"></div>
+<!-- Inserted this line: -->
+<pre id="content_zig" class="content prettyprint lang-zig"></pre>
+```
+
+[(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/pull/1/files)
+
+We'll see the Zig Tab like this...
+
+[lupyuen3.github.io/blockly-zig-nuttx/demos/code/](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
+# TODO
+
 TODO
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
