@@ -133,7 +133,7 @@
    if (code) {
      code = this.prefixLines(code, this.INDENT);
    }
-   code = 'main() {\n' + code + '}';
+   code = 'pub fn main() !void {\n' + code + '}';
  
    // Convert the definitions dictionary into a list.
    const imports = [];
