@@ -240,7 +240,7 @@ Code.LANG = Code.getLang();
  * @private
  */
 Code.TABS_ = [
-  'blocks', 'javascript', 'php', 'python', 'dart', 'lua', 'xml', 'json'
+  'blocks', 'zig', 'javascript', 'php', 'python', 'dart', 'lua', 'xml', 'json'
 ];
 
 /**
@@ -248,7 +248,7 @@ Code.TABS_ = [
  * @private
  */
 Code.TABS_DISPLAY_ = [
-  'Blocks', 'JavaScript', 'PHP', 'Python', 'Dart', 'Lua', 'XML', 'JSON'
+  'Blocks', 'Zig', 'JavaScript', 'PHP', 'Python', 'Dart', 'Lua', 'XML', 'JSON'
 ];
 
 Code.selected = 'blocks';
@@ -355,6 +355,8 @@ Code.renderContent = function() {
     jsonTextarea.value = JSON.stringify(
         Blockly.serialization.workspaces.save(Code.workspace), null, 2);
     jsonTextarea.focus();
+  } else if (content.id == 'content_zig') {
+    Code.attemptCodeGeneration(Blockly.Zig);
   } else if (content.id === 'content_javascript') {
     Code.attemptCodeGeneration(Blockly.JavaScript);
   } else if (content.id === 'content_python') {
