@@ -134,7 +134,6 @@ npm install
 
 ## Run these steps when we change the Zig Code Generator
 npm run build
-npm run package
 npm run publish
 
 ## When prompted "Is this the correct branch?",
