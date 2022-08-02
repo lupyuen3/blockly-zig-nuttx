@@ -130,6 +130,11 @@ const chunks = [
     name: 'dart',
     entry: 'generators/dart/all.js',
     reexport: 'Blockly.Dart',
+  },
+  {
+    name: 'zig',
+    entry: 'generators/zig/all.js',
+    reexport: 'Blockly.Zig',
   }
 ];
 
@@ -269,13 +274,15 @@ function buildDeps(done) {
     'tests/mocha'
   ];
 
-  const args = roots.map(root => `--root '${root}' `).join('');
-  execSync(`closure-make-deps ${args} > tests/deps.js`, {stdio: 'inherit'});
+  //// TODO: This fails for Zig
+  //// const args = roots.map(root => `--root '${root}' `).join('');
+  //// execSync(`closure-make-deps ${args} > tests/deps.js`, {stdio: 'inherit'});
 
-  // Use grep to filter out the entries that are already in deps.js.
-  const testArgs = testRoots.map(root => `--root '${root}' `).join('');
-  execSync(`closure-make-deps ${testArgs} | grep 'tests/mocha'` +
-      ' > tests/deps.mocha.js', {stdio: 'inherit'});
+  //// TODO: This fails for Zig
+  //// Use grep to filter out the entries that are already in deps.js.
+  //// const testArgs = testRoots.map(root => `--root '${root}' `).join('');
+  //// execSync(`closure-make-deps ${testArgs} | grep 'tests/mocha'` +
+  ////     ' > tests/deps.mocha.js', {stdio: 'inherit'});
   done();
 };
 
@@ -444,8 +451,9 @@ function getChunkOptions() {
     // valid on other machines.  Only needed because we're saving this
     // output to use later on another machine.
     rawOptions.js = rawOptions.js.map(p => p.replace(process.cwd(), '.'));
-    fs.writeFileSync(CHUNK_CACHE_FILE,
-                     JSON.stringify(rawOptions, null, 2) + '\n');
+    //// TODO: This fails for Zig
+    //// fs.writeFileSync(CHUNK_CACHE_FILE,
+    ////                  JSON.stringify(rawOptions, null, 2) + '\n');
   } else {
     console.log(`Warning: using pre-computed chunks from ${CHUNK_CACHE_FILE}`);
     rawOptions = JSON.parse(String(fs.readFileSync(CHUNK_CACHE_FILE)));
