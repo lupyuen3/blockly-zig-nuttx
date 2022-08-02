@@ -100,9 +100,9 @@ Rebuild Blockly with the Zig Code Generator...
 ```bash
 git clone --recursive https://github.com/lupyuen3/blockly-zig-nuttx
 cd blockly-zig-nuttx
-npm i -g google-closure-compiler
 npm install
 npm run build
+npm run package
 ```
 
 # TODO
