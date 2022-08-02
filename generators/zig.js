@@ -116,10 +116,11 @@
    }
  
    // Declare all of the variables.
-   if (defvars.length) {
-     this.definitions_['variables'] =
-         'var ' + defvars.join(', ') + ';';
-   }
+   // For Zig: No need to declare variables
+   // if (defvars.length) {
+   //   this.definitions_['variables'] =
+   //     'var ' + defvars.join(', ') + ';';
+   // }
    this.isInitialized = true;
  };
  
