@@ -95,6 +95,15 @@ Add the dependencies...
 
 TODO
 
+Build the Zig Code Generator...
+
+```bash
+git clone --recursive https://github.com/lupyuen3/blockly-zig-nuttx
+cd blockly-zig-nuttx
+npm install
+npm run build
+```
+
 # TODO
 
 TODO
