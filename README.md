@@ -166,10 +166,10 @@ npm run publish
 ## When prompted "Is this the correct branch?",
 ## press N
 
-## Instead of "npm run publish" (which might be slow), we may do this...
+## Instead of "npm run publish" (which can be slow), we may do this...
 ## cp build/*compressed* .
 
-## For Windows: We can copy the generated files to the c:\blockly-zig-nuttx for testing
+## For Windows: We can copy the generated files to c:\blockly-zig-nuttx for testing
 cp *compressed* /mnt/c/blockly-zig-nuttx
 ```
 
@@ -182,6 +182,22 @@ The Zig Tab now shows the generated code in Dart (because we copied the Dart Cod
 [lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
 
 Let's generate some Zig code.
+
+# Assignment Statement
+
+TODO
+
+# Print Statement
+
+TODO
+
+# Repeat Statement
+
+TODO
+
+# Main Function
+
+TODO
 
 # TODO
 
