@@ -244,59 +244,34 @@ Zig['controls_repeat_ext'] = function(block) {
 TODO
 
 ```javascript
- Zig.finish = function(code) {
-   // Indent every line.
-   if (code) {
-     code = this.prefixLines(code, this.INDENT);
-   }
-
-   // Main Function
-   code = [
+Zig.finish = function(code) {
+  ...
+  // Main Function
+  code = [
     '/// Main Function\n',
     'pub fn main() !void {\n',
     code,
     '}',
-   ].join('');
+  ].join('');
  
-   // Convert the definitions dictionary into a list.
-   const imports = [];
-   const definitions = [];
-   for (let name in this.definitions_) {
-     const def = this.definitions_[name];
-     if (def.match(/^import\s/)) {
-       imports.push(def);
-     } else {
-       definitions.push(def);
-     }
-   }
-   // Call Blockly.Generator's finish.
-   code = Object.getPrototypeOf(this).finish.call(this, code);
-   this.isInitialized = false;
- 
-   // Compose Variable Definitions
-   // For Zig: No need to declare variables
-   // this.nameDB_.reset();
-   // const allDefs = [
-   //   imports.join('\n'),
-   //   '\n\n',
-   //   definitions.join('\n\n'),
-   // ].join('');
+  // Convert the definitions dictionary into a list.
+  ...
 
-   // Compose Zig Header
-   const header = [
+  // Compose Zig Header
+  const header = [
     '/// Import Standard Library\n',
     'const std = @import("std");\n',
-   ].join('');
+  ].join('');
 
-   // Compose Zig Trailer
-   const trailer = [
-     '/// Aliases for Standard Library\n',
-     'const assert = std.debug.assert;\n',
-     'const debug  = std.log.debug;\n',
-   ].join('');
+  // Compose Zig Trailer
+  const trailer = [
+    '/// Aliases for Standard Library\n',
+    'const assert = std.debug.assert;\n',
+    'const debug  = std.log.debug;\n',
+  ].join('');
 
-   // Combine Header, Definitions, Code and Trailer
-   return [
+  // Combine Header, Definitions, Code and Trailer
+  return [
     header,
     '\n',
     // For Zig: No need to declare variables
@@ -304,9 +279,11 @@ TODO
     code,
     '\n\n',
     trailer,
-   ].join('');
- };
+  ].join('');
+};
 ```
+
+[(Source)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig.js#L132-L193)
 
 # Run the Generated Code
 
