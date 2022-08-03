@@ -72,7 +72,7 @@ Blockly comes bundled with Code Generators for JavaScript, Python, Dart, ...
 
 Let's create a Code Generator for Zig.
 
-Copy [generators/dart.js](generators/dart.js) to [generators/zig.js](generators/dart.js)
+Copy [generators/dart.js](generators/dart.js) to [generators/zig.js](generators/zig.js)
 
 Copy all files from [generators/dart](generators/dart) to [generators/zig](generators/zig)...
 
