@@ -229,17 +229,17 @@ Zig['variables_set'] = function(block) {
 
 # Print Expression
 
-TODO
+To print the value of an expression...
 
 ![Print Expression](https://lupyuen.github.io/images/blockly-run6.png)
 
-To generate this Zig code...
+We'll generate this Zig code...
 
 ```zig
 debug("a={}", .{ a });
 ```
 
-We do this in the Zig Code Generator for Blockly (JavaScript)...
+Here's how we implement this in the Zig Code Generator for Blockly...
 
 ```javascript
 Zig['text_print'] = function(block) {
@@ -253,11 +253,11 @@ Zig['text_print'] = function(block) {
 
 # Repeat Loop
 
-TODO
+To run a repeating loop...
 
 ![Repeat Loop](https://lupyuen.github.io/images/blockly-run4.png)
 
-To generate this Zig code...
+We'll generate this Zig code...
 
 ```zig
 var count: usize = 0;
@@ -266,7 +266,7 @@ while (count < 10) : (count += 1) {
 }
 ```
 
-We do this in the Zig Code Generator for Blockly (JavaScript)...
+With this Zig Code Generator in Blockly...
 
 ```javascript
 Zig['controls_repeat_ext'] = function(block) {
@@ -286,9 +286,7 @@ Zig['controls_repeat_ext'] = function(block) {
 
 # Main Function
 
-TODO
-
-To generate this Zig code...
+The generated Zig code needs to be wrapped like this, to become a valid Zig program...
 
 ```zig
 /// Import Standard Library
@@ -296,6 +294,7 @@ const std = @import("std");
 
 /// Main Function
 pub fn main() !void {
+  // TODO: Generated Zig Code here
   ...
 }
 
@@ -304,7 +303,7 @@ const assert = std.debug.assert;
 const debug  = std.log.debug;
 ```
 
-We do this in the Zig Code Generator for Blockly (JavaScript)...
+We do this in the Zig Code Generator for Blockly...
 
 ```javascript
 Zig.finish = function(code) {
