@@ -152,7 +152,7 @@ Add our Code Generator to the Build Task: [scripts/gulpfiles/build_tasks.js](scr
 
 [(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/pull/1/files#diff-a9a5784f43ce15ca76bb3e99eb6625c3ea15381e20eac6f7527ecbcb2945ac14)
 
-Let's compile our Zig Code Generator.
+Now we compile our Zig Code Generator.
 
 # Build Blockly
 
@@ -201,7 +201,7 @@ The Zig Tab now shows the generated code in Dart (because we copied the Dart Cod
 
 (In case of problems, check the JavaScript Console. Ignore the `storage.js` error)
 
-Let's modify our Code Generator to generate Zig code.
+Now we modify our Code Generator to generate Zig code.
 
 # Set Variable
 
