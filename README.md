@@ -205,17 +205,17 @@ Let's modify our Code Generator to generate Zig code.
 
 # Set Variable
 
-TODO
+Let's generate the Zig code for setting a variable...
 
 ![Set Variable](https://lupyuen.github.io/images/blockly-run5.png)
 
-To generate this Zig code...
+For simplicity we'll treat variables as constants...
 
 ```zig
 const a: f32 = 123.45;
 ```
 
-We do this in the Zig Code Generator for Blockly (JavaScript)...
+This is how we generate the above code in the Zig Code Generator for Blockly (coded in JavaScript)...
 
 ```javascript
 Zig['variables_set'] = function(block) {
