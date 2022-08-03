@@ -199,7 +199,7 @@ Drag-and-drop some Blocks and click the Zig Tab.
 
 The Zig Tab now shows the generated code in Dart (because we copied the Dart Code Generator).
 
-(In case of problems, check the JavaScript Console)
+(In case of problems, check the JavaScript Console. Ignore the `storage.js` error)
 
 Let's modify our Code Generator to generate Zig code.
 
