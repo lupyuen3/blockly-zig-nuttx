@@ -207,6 +207,44 @@ TODO
 
 TODO
 
+# Run the Generated Code
+
+TODO
+
+```zig
+/// Import Standard Library
+const std = @import("std");
+
+/// Main Function
+pub fn main() !void {
+  var count: usize = 0;
+  while (count < 10) : (count += 1) {
+    const a: f32 = 123.45;
+    debug("a={}", .{ a });
+  }
+}
+
+/// Aliases for Standard Library
+const assert = std.debug.assert;
+const debug  = std.log.debug;
+```
+
+TODO
+
+```bash
+$ zig run a.zig
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+debug: 1.23449996e+02
+```
+
 # TODO
 
 TODO
