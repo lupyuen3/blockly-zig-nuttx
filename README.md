@@ -349,13 +349,15 @@ Zig.finish = function(code) {
 
 # Run the Generated Code
 
-TODO
+Follow the steps described earlier to build Blockly.
 
-![Blockly Visual Program](https://lupyuen.github.io/images/blockly-run1.png)
-
-Let's drag-and-drop the above Blockly Visual Program here...
+We browse to our local Blockly site...
 
 [lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
+Then drag-and-drop the Blocks to create this Visual Program...
+
+![Blockly Visual Program](https://lupyuen.github.io/images/blockly-run1.png)
 
 Click the Zig Tab to see the generated code...
 
@@ -399,7 +401,7 @@ debug: 1.23449996e+02
 
 # TODO
 
-TODO
+TODO: Implement the Zig Code Generator for the other Blocks
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 
