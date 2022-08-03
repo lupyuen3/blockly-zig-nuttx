@@ -175,13 +175,21 @@ cp *compressed* /mnt/c/blockly-zig-nuttx
 
 This compiles and updates the Zig Code Generator in [zig_compressed.js](zig_compressed.js)
 
-Here's the Build Task for VSCode: [.vscode/tasks.json](.vscode/tasks.json)
+If we're using VSCode, here's the Build Task: [.vscode/tasks.json](.vscode/tasks.json)
 
-The Zig Tab now shows the generated code in Dart (because we copied the Dart Code Generator)...
+Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server, we should see this...
 
 [lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
 
-Let's generate some Zig code.
+(Blockly will NOT render correctly with `file://...`, it must be `http://localhost:port/...`)
+
+Drag-and-drop some Blocks and click the Zig Tab.
+
+The Zig Tab now shows the generated code in Dart (because we copied the Dart Code Generator).
+
+(In case of problems, check the JavaScript Console)
+
+Let's modify our Code Generator to generate Zig code.
 
 # Assignment Statement
 
