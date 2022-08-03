@@ -134,7 +134,14 @@
    if (code) {
      code = this.prefixLines(code, this.INDENT);
    }
-   code = 'pub fn main() !void {\n' + code + '}';
+
+   // Main Function
+   code = [
+    '/// Main Function\n',
+    'pub fn main() !void {\n',
+    code,
+    '}',
+   ].join('');
  
    // Convert the definitions dictionary into a list.
    const imports = [];
@@ -151,9 +158,38 @@
    code = Object.getPrototypeOf(this).finish.call(this, code);
    this.isInitialized = false;
  
-   this.nameDB_.reset();
-   const allDefs = imports.join('\n') + '\n\n' + definitions.join('\n\n');
-   return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n') + code;
+   // Compose Variable Definitions
+   // For Zig: No need to declare variables
+   // this.nameDB_.reset();
+   // const allDefs = [
+   //   imports.join('\n'),
+   //   '\n\n',
+   //   definitions.join('\n\n'),
+   // ].join('');
+
+   // Compose Zig Header
+   const header = [
+    '/// Import Standard Library\n',
+    'const std = @import("std");\n',
+   ].join('');
+
+   // Compose Zig Trailer
+   const trailer = [
+     '/// Aliases for Standard Library\n',
+     'const assert = std.debug.assert;\n',
+     'const debug  = std.log.debug;\n',
+   ].join('');
+
+   // Combine Header, Definitions, Code and Trailer
+   return [
+    header,
+    '\n',
+    // For Zig: No need to declare variables
+    // allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n'),
+    code,
+    '\n\n',
+    trailer,
+   ].join('');
  };
  
  /**

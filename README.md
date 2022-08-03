@@ -121,9 +121,24 @@ Code.renderContent = function() {
 
 [(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/pull/1/files#diff-d72873b861dee958e5d443c919726dd856de594bd56b1e73d8948a7719163553)
 
+Add Zig Code Generator to the Build Task: [scripts/gulpfiles/build_tasks.js](scripts/gulpfiles/build_tasks.js#L98-L139)
+
+```javascript
+ const chunks = [
+   // Added this...
+   {
+      name: 'zig',
+      entry: 'generators/zig/all.js',
+      reexport: 'Blockly.Zig',
+   }
+ ];
+```
+
 Let's build our Zig Code Generator.
 
 # Build Blocly
+
+Blockly builds fine with Linux, macOS and WSL. (But not plain old Windows CMD)
 
 To build Blockly with the Zig Code Generator...
 
@@ -138,9 +153,17 @@ npm run publish
 
 ## When prompted "Is this the correct branch?",
 ## press N
+
+## Instead of "npm run publish" (which might be slow), we may do this...
+## cp build/*compressed* .
+
+## For Windows: We can copy the generated files to the c:\blockly-zig-nuttx for testing
+cp *compressed* /mnt/c/blockly-zig-nuttx
 ```
 
 This compiles and updates the Zig Code Generator in [zig_compressed.js](zig_compressed.js)
+
+Here's the Build Task for VSCode: [.vscode/tasks.json](.vscode/tasks.json)
 
 The Zig Tab now shows the generated code in Dart (because we copied the Dart Code Generator)...
 

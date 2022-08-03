@@ -268,7 +268,7 @@ Zig['text_trim'] = function(block) {
 Zig['text_print'] = function(block) {
   // Print statement.
   const msg = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || "''";
-  return `debug("{}", .{ ${msg} });\n`;
+  return `debug("${msg}={}", .{ ${msg} });\n`;
 };
 
 Zig['text_prompt_ext'] = function(block) {
