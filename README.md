@@ -64,6 +64,8 @@ We'll see the Zig Tab like this...
 
 [lupyuen3.github.io/blockly-zig-nuttx/demos/code/](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
 
+![Zig Tab in Blockly](https://lupyuen.github.io/images/blockly-run3a.png)
+
 # Zig Code Generator
 
 Blockly comes bundled with Code Generators for JavaScript, Python, Dart, ...
