@@ -146,6 +146,8 @@ Add Zig Code Generator to the Build Task: [scripts/gulpfiles/build_tasks.js](scr
  ];
 ```
 
+[(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/pull/1/files#diff-a9a5784f43ce15ca76bb3e99eb6625c3ea15381e20eac6f7527ecbcb2945ac14)
+
 Let's compile our Zig Code Generator.
 
 # Build Blockly
@@ -196,6 +198,12 @@ Let's modify our Code Generator to generate Zig code.
 TODO
 
 ```zig
+const a: f32 = 123.45;
+```
+
+TODO
+
+```javascript
 Zig['variables_set'] = function(block) {
   // Variable setter.
   ...
@@ -205,11 +213,17 @@ Zig['variables_set'] = function(block) {
 
 [(Source)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/variables.js#L25-L32)
 
-# Print Statement
+# Print Expression
 
 TODO
 
 ```zig
+debug("a={}", .{ a });
+```
+
+TODO
+
+```javascript
 Zig['text_print'] = function(block) {
   // Print statement.
   ...
@@ -224,6 +238,15 @@ Zig['text_print'] = function(block) {
 TODO
 
 ```zig
+var count: usize = 0;
+while (count < 10) : (count += 1) {
+  ...
+}
+```
+
+TODO
+
+```javascript
 Zig['controls_repeat_ext'] = function(block) {
   // Repeat n times.
   ...
@@ -240,6 +263,22 @@ Zig['controls_repeat_ext'] = function(block) {
 [(Source)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/loops.js#L19-L45)
 
 # Main Function
+
+TODO
+
+```zig
+/// Import Standard Library
+const std = @import("std");
+
+/// Main Function
+pub fn main() !void {
+  ...
+}
+
+/// Aliases for Standard Library
+const assert = std.debug.assert;
+const debug  = std.log.debug;
+```
 
 TODO
 
