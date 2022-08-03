@@ -339,7 +339,7 @@ Zig.finish = function(code) {
 };
 ```
 
-We're ready to test the Zig Code Generator!
+We're ready to test our Zig Code Generator!
 
 # Run the Generated Code
 
