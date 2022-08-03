@@ -2,9 +2,15 @@
 
 # Visual Programming for Zig with NuttX Sensors
 
+[__Follow the updates on Twitter__](https://twitter.com/MisterTechBlog/status/1554650482240397312?t=vWS4axtw_TK_5OV4bdkgDw&s=19)
+
 Read the article...
 
 -   ["Read NuttX Sensor Data with Zig"](https://lupyuen.github.io/articles/sensor)
+
+Work-In-Progress Demo...
+
+-   [lupyuen3.github.io/blockly-zig-nuttx/demos/code/](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
 
 Can we use Scratch / [Blockly](https://github.com/google/blockly) to code Zig programs, the drag-n-drop way?
 
@@ -134,9 +140,9 @@ Add Zig Code Generator to the Build Task: [scripts/gulpfiles/build_tasks.js](scr
  ];
 ```
 
-Let's build our Zig Code Generator.
+Let's compile our Zig Code Generator.
 
-# Build Blocly
+# Build Blockly
 
 Blockly builds fine with Linux, macOS and WSL. (But not plain old Windows CMD)
 
