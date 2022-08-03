@@ -179,13 +179,13 @@ npm run publish
 ## cp *compressed* /mnt/c/blockly-zig-nuttx
 ```
 
-This compiles and updates the Zig Code Generator in [zig_compressed.js](zig_compressed.js)
+This compiles and updates the Zig Code Generator in [zig_compressed.js](zig_compressed.js) and [zig_compressed.js.map](zig_compressed.js.map)
 
 If we're using VSCode, here's the Build Task: [.vscode/tasks.json](.vscode/tasks.json)
 
 # Test Blockly
 
-Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server. [(Like Web Server for Chrome)](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/).
+Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server. [(Like Web Server for Chrome)](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/)
 
 We should see this...
 
