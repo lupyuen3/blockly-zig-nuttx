@@ -219,7 +219,7 @@ Zig['text_print'] = function(block) {
 
 [(Source)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/text.js#L268-L272)
 
-# Repeat Block
+# Repeat Loop
 
 TODO
 
@@ -227,8 +227,8 @@ TODO
 Zig['controls_repeat_ext'] = function(block) {
   // Repeat n times.
   ...
-  code += `var ${loopVar}: usize = 0;\n`;
   code += [
+    `var ${loopVar}: usize = 0;\n`,
     `while (${loopVar} < ${endVar}) : (${loopVar} += 1) {\n`,
     branch,
     '}\n'
@@ -242,6 +242,71 @@ Zig['controls_repeat_ext'] = function(block) {
 # Main Function
 
 TODO
+
+```javascript
+ Zig.finish = function(code) {
+   // Indent every line.
+   if (code) {
+     code = this.prefixLines(code, this.INDENT);
+   }
+
+   // Main Function
+   code = [
+    '/// Main Function\n',
+    'pub fn main() !void {\n',
+    code,
+    '}',
+   ].join('');
+ 
+   // Convert the definitions dictionary into a list.
+   const imports = [];
+   const definitions = [];
+   for (let name in this.definitions_) {
+     const def = this.definitions_[name];
+     if (def.match(/^import\s/)) {
+       imports.push(def);
+     } else {
+       definitions.push(def);
+     }
+   }
+   // Call Blockly.Generator's finish.
+   code = Object.getPrototypeOf(this).finish.call(this, code);
+   this.isInitialized = false;
+ 
+   // Compose Variable Definitions
+   // For Zig: No need to declare variables
+   // this.nameDB_.reset();
+   // const allDefs = [
+   //   imports.join('\n'),
+   //   '\n\n',
+   //   definitions.join('\n\n'),
+   // ].join('');
+
+   // Compose Zig Header
+   const header = [
+    '/// Import Standard Library\n',
+    'const std = @import("std");\n',
+   ].join('');
+
+   // Compose Zig Trailer
+   const trailer = [
+     '/// Aliases for Standard Library\n',
+     'const assert = std.debug.assert;\n',
+     'const debug  = std.log.debug;\n',
+   ].join('');
+
+   // Combine Header, Definitions, Code and Trailer
+   return [
+    header,
+    '\n',
+    // For Zig: No need to declare variables
+    // allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n'),
+    code,
+    '\n\n',
+    trailer,
+   ].join('');
+ };
+```
 
 # Run the Generated Code
 
