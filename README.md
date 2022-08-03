@@ -26,6 +26,10 @@ _Why limit to IoT Sensor Apps?_
 
 Let's customise Blockly to generate Zig code for Apache NuttX RTOS...
 
+![Visual Programming for Zig with Blockly](https://lupyuen.github.io/images/blockly-title.jpg)
+
+[(Source)](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
 # Add a Zig Tab
 
 Blockly is bundled with a list of Demos...
