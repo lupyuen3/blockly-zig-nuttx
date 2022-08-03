@@ -171,8 +171,8 @@ npm run publish
 ## Instead of "npm run publish" (which can be slow), we may do this...
 ## cp build/*compressed* .
 
-## For Windows: We can copy the generated files to c:\blockly-zig-nuttx for testing
-cp *compressed* /mnt/c/blockly-zig-nuttx
+## For WSL: We can copy the generated files to c:\blockly-zig-nuttx for testing on Windows
+## cp *compressed* /mnt/c/blockly-zig-nuttx
 ```
 
 This compiles and updates the Zig Code Generator in [zig_compressed.js](zig_compressed.js)
