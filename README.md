@@ -191,17 +191,53 @@ The Zig Tab now shows the generated code in Dart (because we copied the Dart Cod
 
 Let's modify our Code Generator to generate Zig code.
 
-# Assignment Statement
+# Set Variable
 
 TODO
+
+```zig
+Zig['variables_set'] = function(block) {
+  // Variable setter.
+  ...
+  return `const ${varName}: f32 = ${argument0};\n`;
+};
+```
+
+[(Source)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/variables.js#L25-L32)
 
 # Print Statement
 
 TODO
 
-# Repeat Statement
+```zig
+Zig['text_print'] = function(block) {
+  // Print statement.
+  ...
+  return `debug("${msg}={}", .{ ${msg} });\n`;
+};
+```
+
+[(Source)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/text.js#L268-L272)
+
+# Repeat Block
 
 TODO
+
+```zig
+Zig['controls_repeat_ext'] = function(block) {
+  // Repeat n times.
+  ...
+  code += `var ${loopVar}: usize = 0;\n`;
+  code += [
+    `while (${loopVar} < ${endVar}) : (${loopVar} += 1) {\n`,
+    branch,
+    '}\n'
+  ].join('');
+  return code;
+};
+```
+
+[(Source)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/loops.js#L19-L45)
 
 # Main Function
 

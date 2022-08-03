@@ -35,8 +35,8 @@ Zig['controls_repeat_ext'] = function(block) {
     endVar = Zig.nameDB_.getDistinctName('repeat_end', NameType.VARIABLE);
     code += 'var ' + endVar + ' = ' + repeats + ';\n';
   }
-  code += `var ${loopVar}: usize = 0;\n`;
   code += [
+    `var ${loopVar}: usize = 0;\n`,
     `while (${loopVar} < ${endVar}) : (${loopVar} += 1) {\n`,
     branch,
     '}\n'
