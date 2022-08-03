@@ -97,7 +97,11 @@ Change all `Dart` to `Zig`, preserve case.
 
 [(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/commit/efe185d6cac4306dcdc6b6a5f261b331bb992976)
 
-Load the Zig Code Generator in [demos/code/index.html](demos/code/index.html)...
+# Load Code Generator
+
+Let's load our Zig Code Generator in Blockly...
+
+Add the Zig Code Generator to [demos/code/index.html](demos/code/index.html)...
 
 ```html
 <!--  Load Zig Code Generator  -->
@@ -133,7 +137,7 @@ Code.renderContent = function() {
 
 [(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/pull/1/files#diff-d72873b861dee958e5d443c919726dd856de594bd56b1e73d8948a7719163553)
 
-Add Zig Code Generator to the Build Task: [scripts/gulpfiles/build_tasks.js](scripts/gulpfiles/build_tasks.js#L98-L139)
+Add our Code Generator to the Build Task: [scripts/gulpfiles/build_tasks.js](scripts/gulpfiles/build_tasks.js#L98-L139)
 
 ```javascript
  const chunks = [
@@ -179,11 +183,17 @@ This compiles and updates the Zig Code Generator in [zig_compressed.js](zig_comp
 
 If we're using VSCode, here's the Build Task: [.vscode/tasks.json](.vscode/tasks.json)
 
-Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server, we should see this...
+# Test Blockly
+
+Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server. [(Like Web Server for Chrome)](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/).
+
+We should see this...
 
 [lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
 
-(Blockly will NOT render correctly with `file://...`, it must be `http://localhost:port/...`)
+![Zig Tab in Blockly](https://lupyuen.github.io/images/blockly-run3a.png)
+
+Blockly will NOT render correctly with `file://...`, it must be `http://localhost:port/...`
 
 Drag-and-drop some Blocks and click the Zig Tab.
 
