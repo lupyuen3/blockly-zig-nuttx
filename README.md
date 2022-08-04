@@ -393,6 +393,14 @@ debug: 1.23449996e+02
 debug: 1.23449996e+02
 ```
 
+# Blockly on Mobile
+
+Blockly works OK with Mobile Web Browsers too...
+
+[lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
+![Blocky on Mobile Web Browser](https://lupyuen.github.io/images/blockly-mobile.jpg)
+
 # TODO
 
 TODO: Implement the Zig Code Generator for the other Blocks
