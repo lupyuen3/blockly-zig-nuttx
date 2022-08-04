@@ -2,9 +2,9 @@
 
 # Visual Programming for Zig with NuttX Sensors
 
-[__Follow the updates on Twitter__](https://twitter.com/MisterTechBlog/status/1554650482240397312?t=vWS4axtw_TK_5OV4bdkgDw&s=19)
+Read the articles...
 
-Read the article...
+-   ["Zig Visual Programming with Blockly"](https://lupyuen.github.io/articles/blockly)
 
 -   ["Read NuttX Sensor Data with Zig"](https://lupyuen.github.io/articles/sensor)
 
