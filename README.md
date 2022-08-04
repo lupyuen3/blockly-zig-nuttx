@@ -278,6 +278,19 @@ Zig['controls_repeat_ext'] = function(block) {
 };
 ```
 
+_What happens if we have 2 repeat loops? Won't `count` clash?_
+
+Blockly will automatically generate another counter...
+
+```zig
+var count2: usize = 0;
+while (count2 < 10) : (count2 += 1) {
+  ...
+}
+```
+
+(Try it out!)
+
 # Main Function
 
 The generated Zig code needs to be wrapped like this, to become a valid Zig program...
