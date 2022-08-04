@@ -135,7 +135,7 @@ Zig.finish = function(code) {
     code = this.prefixLines(code, this.INDENT);
   }
 
-  // Main Function
+  // Compose Main Function
   code = [
    '/// Main Function\n',
    'pub fn main() !void {\n',
