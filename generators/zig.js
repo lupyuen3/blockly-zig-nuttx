@@ -158,14 +158,14 @@ Zig.finish = function(code) {
   code = Object.getPrototypeOf(this).finish.call(this, code);
   this.isInitialized = false;
 
-  // Compose Variable Definitions
-  // For Zig: No need to declare variables
-  // this.nameDB_.reset();
-  // const allDefs = [
-  //   imports.join('\n'),
-  //   '\n\n',
-  //   definitions.join('\n\n'),
-  // ].join('');
+  // Compose Function Definitions
+  this.nameDB_.reset();
+  const allDefs = [
+    // For Zig: No need to declare imports
+    // imports.join('\n'),
+    // '\n\n',
+    definitions.join('\n\n'),
+  ].join('');
 
   // Compose Zig Header
   const header = [
@@ -180,14 +180,13 @@ Zig.finish = function(code) {
     'const debug  = std.log.debug;\n',
   ].join('');
 
-  // Combine Header, Definitions, Code and Trailer
+  // Combine Header, Code, Function Definitions and Trailer
   return [
     header,
     '\n',
-    // For Zig: No need to declare variables
-    // allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n'),
     code,
-    '\n\n',
+    (allDefs == '') ? '' : '\n\n',
+    allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n'),
     trailer,
   ].join('');
 };
