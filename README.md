@@ -394,16 +394,16 @@ Which runs perfectly OK with Zig! 🎉
 
 ```bash
 $ zig run a.zig
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
-debug: 1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
+debug: a=1.23449996e+02
 ```
 
 # Blockly on Mobile
