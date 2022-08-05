@@ -58,7 +58,7 @@ Zig['lists_indexOf'] = function(block) {
   // Find an item in the list.
   const operator =
       block.getFieldValue('END') === 'FIRST' ? 'indexOf' : 'lastIndexOf';
-  const item = Zig.valueToCode(block, 'FIND', Zig.ORDER_NONE) || "''";
+  const item = Zig.valueToCode(block, 'FIND', Zig.ORDER_NONE) || '""';
   const list =
       Zig.valueToCode(block, 'VALUE', Zig.ORDER_UNARY_POSTFIX) || '[]';
   const code = list + '.' + operator + '(' + item + ')';
@@ -402,12 +402,12 @@ List ${Zig.FUNCTION_NAME_PLACEHOLDER_}(List list, String type, int direction) {
 Zig['lists_split'] = function(block) {
   // Block for splitting text into a list, or joining a list into text.
   let input = Zig.valueToCode(block, 'INPUT', Zig.ORDER_UNARY_POSTFIX);
-  const delimiter = Zig.valueToCode(block, 'DELIM', Zig.ORDER_NONE) || "''";
+  const delimiter = Zig.valueToCode(block, 'DELIM', Zig.ORDER_NONE) || '""';
   const mode = block.getFieldValue('MODE');
   let functionName;
   if (mode === 'SPLIT') {
     if (!input) {
-      input = "''";
+      input = '""';
     }
     functionName = 'split';
   } else if (mode === 'JOIN') {

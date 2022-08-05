@@ -35,10 +35,10 @@ Zig['text_join'] = function(block) {
   // Create a string made up of any number of elements of any type.
   switch (block.itemCount_) {
     case 0:
-      return ["''", Zig.ORDER_ATOMIC];
+      return ['""', Zig.ORDER_ATOMIC];
     case 1: {
       const element =
-          Zig.valueToCode(block, 'ADD0', Zig.ORDER_UNARY_POSTFIX) || "''";
+          Zig.valueToCode(block, 'ADD0', Zig.ORDER_UNARY_POSTFIX) || '""';
       const code = element + '.toString()';
       return [code, Zig.ORDER_UNARY_POSTFIX];
     }
@@ -46,7 +46,7 @@ Zig['text_join'] = function(block) {
       const elements = new Array(block.itemCount_);
       for (let i = 0; i < block.itemCount_; i++) {
         elements[i] =
-            Zig.valueToCode(block, 'ADD' + i, Zig.ORDER_NONE) || "''";
+            Zig.valueToCode(block, 'ADD' + i, Zig.ORDER_NONE) || '""';
       }
       const code = '[' + elements.join(',') + '].join()';
       return [code, Zig.ORDER_UNARY_POSTFIX];
@@ -58,21 +58,21 @@ Zig['text_append'] = function(block) {
   // Append to a variable in place.
   const varName =
       Zig.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
-  const value = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || "''";
+  const value = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || '""';
   return varName + ' = [' + varName + ', ' + value + '].join();\n';
 };
 
 Zig['text_length'] = function(block) {
   // String or array length.
   const text =
-      Zig.valueToCode(block, 'VALUE', Zig.ORDER_UNARY_POSTFIX) || "''";
+      Zig.valueToCode(block, 'VALUE', Zig.ORDER_UNARY_POSTFIX) || '""';
   return [text + '.length', Zig.ORDER_UNARY_POSTFIX];
 };
 
 Zig['text_isEmpty'] = function(block) {
   // Is the string null or array empty?
   const text =
-      Zig.valueToCode(block, 'VALUE', Zig.ORDER_UNARY_POSTFIX) || "''";
+      Zig.valueToCode(block, 'VALUE', Zig.ORDER_UNARY_POSTFIX) || '""';
   return [text + '.isEmpty', Zig.ORDER_UNARY_POSTFIX];
 };
 
@@ -80,9 +80,9 @@ Zig['text_indexOf'] = function(block) {
   // Search the text for a substring.
   const operator =
       block.getFieldValue('END') === 'FIRST' ? 'indexOf' : 'lastIndexOf';
-  const substring = Zig.valueToCode(block, 'FIND', Zig.ORDER_NONE) || "''";
+  const substring = Zig.valueToCode(block, 'FIND', Zig.ORDER_NONE) || '""';
   const text =
-      Zig.valueToCode(block, 'VALUE', Zig.ORDER_UNARY_POSTFIX) || "''";
+      Zig.valueToCode(block, 'VALUE', Zig.ORDER_UNARY_POSTFIX) || '""';
   const code = text + '.' + operator + '(' + substring + ')';
   if (block.workspace.options.oneBasedIndex) {
     return [code + ' + 1', Zig.ORDER_ADDITIVE];
@@ -97,7 +97,7 @@ Zig['text_charAt'] = function(block) {
   const textOrder = (where === 'FIRST' || where === 'FROM_START') ?
       Zig.ORDER_UNARY_POSTFIX :
       Zig.ORDER_NONE;
-  const text = Zig.valueToCode(block, 'VALUE', textOrder) || "''";
+  const text = Zig.valueToCode(block, 'VALUE', textOrder) || '""';
   let at;
   switch (where) {
     case 'FIRST': {
@@ -144,7 +144,7 @@ Zig['text_getSubstring'] = function(block) {
   const requiresLengthCall = (where1 !== 'FROM_END' && where2 === 'FROM_START');
   const textOrder =
       requiresLengthCall ? Zig.ORDER_UNARY_POSTFIX : Zig.ORDER_NONE;
-  const text = Zig.valueToCode(block, 'STRING', textOrder) || "''";
+  const text = Zig.valueToCode(block, 'STRING', textOrder) || '""';
   let code;
   if (where1 === 'FIRST' && where2 === 'LAST') {
     code = text;
@@ -224,7 +224,7 @@ Zig['text_changeCase'] = function(block) {
   };
   const operator = OPERATORS[block.getFieldValue('CASE')];
   const textOrder = operator ? Zig.ORDER_UNARY_POSTFIX : Zig.ORDER_NONE;
-  const text = Zig.valueToCode(block, 'TEXT', textOrder) || "''";
+  const text = Zig.valueToCode(block, 'TEXT', textOrder) || '""';
   let code;
   if (operator) {
     // Upper and lower case are functions built into Zig.
@@ -261,13 +261,13 @@ Zig['text_trim'] = function(block) {
   };
   const operator = OPERATORS[block.getFieldValue('MODE')];
   const text =
-      Zig.valueToCode(block, 'TEXT', Zig.ORDER_UNARY_POSTFIX) || "''";
+      Zig.valueToCode(block, 'TEXT', Zig.ORDER_UNARY_POSTFIX) || '""';
   return [text + operator, Zig.ORDER_UNARY_POSTFIX];
 };
 
 Zig['text_print'] = function(block) {
   // Print statement.
-  const msg = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || "''";
+  const msg = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || '""';
   return `debug("${msg}={}", .{ ${msg} });\n`;
 };
 
@@ -280,7 +280,7 @@ Zig['text_prompt_ext'] = function(block) {
     msg = Zig.quote_(block.getFieldValue('TEXT'));
   } else {
     // External message.
-    msg = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || "''";
+    msg = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || '""';
   }
   let code = 'Html.window.prompt(' + msg + ', \'\')';
   const toNumber = block.getFieldValue('TYPE') === 'NUMBER';
@@ -294,8 +294,8 @@ Zig['text_prompt_ext'] = function(block) {
 Zig['text_prompt'] = Zig['text_prompt_ext'];
 
 Zig['text_count'] = function(block) {
-  const text = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || "''";
-  const sub = Zig.valueToCode(block, 'SUB', Zig.ORDER_NONE) || "''";
+  const text = Zig.valueToCode(block, 'TEXT', Zig.ORDER_NONE) || '""';
+  const sub = Zig.valueToCode(block, 'SUB', Zig.ORDER_NONE) || '""';
   // Substring count is not a native Zig function.  Define one.
   const functionName = Zig.provideFunction_('text_count', `
 int ${Zig.FUNCTION_NAME_PLACEHOLDER_}(String haystack, String needle) {
@@ -320,9 +320,9 @@ int ${Zig.FUNCTION_NAME_PLACEHOLDER_}(String haystack, String needle) {
 
 Zig['text_replace'] = function(block) {
   const text =
-      Zig.valueToCode(block, 'TEXT', Zig.ORDER_UNARY_POSTFIX) || "''";
-  const from = Zig.valueToCode(block, 'FROM', Zig.ORDER_NONE) || "''";
-  const to = Zig.valueToCode(block, 'TO', Zig.ORDER_NONE) || "''";
+      Zig.valueToCode(block, 'TEXT', Zig.ORDER_UNARY_POSTFIX) || '""';
+  const from = Zig.valueToCode(block, 'FROM', Zig.ORDER_NONE) || '""';
+  const to = Zig.valueToCode(block, 'TO', Zig.ORDER_NONE) || '""';
   const code = text + '.replaceAll(' + from + ', ' + to + ')';
   return [code, Zig.ORDER_UNARY_POSTFIX];
 };
@@ -332,7 +332,7 @@ Zig['text_reverse'] = function(block) {
   // http://stackoverflow.com/a/21613700/3529104
   // Implementing something is possibly better than not implementing anything?
   const text =
-      Zig.valueToCode(block, 'TEXT', Zig.ORDER_UNARY_POSTFIX) || "''";
+      Zig.valueToCode(block, 'TEXT', Zig.ORDER_UNARY_POSTFIX) || '""';
   const code = 'new String.fromCharCodes(' + text + '.runes.toList().reversed)';
   return [code, Zig.ORDER_UNARY_PREFIX];
 };
