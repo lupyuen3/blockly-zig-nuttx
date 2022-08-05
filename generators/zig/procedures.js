@@ -44,14 +44,24 @@ Zig['procedures_defreturn'] = function(block) {
   if (returnValue) {
     returnValue = Zig.INDENT + 'return ' + returnValue + ';\n';
   }
-  const returnType = returnValue ? 'dynamic' : 'void';
+  const returnType = returnValue ? '!f32' : '!void';
   const args = [];
   const variables = block.getVars();
   for (let i = 0; i < variables.length; i++) {
-    args[i] = Zig.nameDB_.getName(variables[i], NameType.VARIABLE);
+    args[i] = [
+      Zig.nameDB_.getName(variables[i], NameType.VARIABLE),
+      ': f32',
+    ].join('');
   }
-  let code = returnType + ' ' + funcName + '(' + args.join(', ') + ') {\n' +
-      xfix1 + loopTrap + branch + xfix2 + returnValue + '}';
+  let code = [
+    'fn ' + funcName + '(' + args.join(', ') + ') ' + returnType + ' {\n',
+    xfix1,
+    loopTrap,
+    branch,
+    xfix2,
+    returnValue,
+    '}',
+  ].join('');
   code = Zig.scrub_(block, code);
   // Add % so as not to collide with helper functions in definitions list.
   Zig.definitions_['%' + funcName] = code;
@@ -71,7 +81,13 @@ Zig['procedures_callreturn'] = function(block) {
   for (let i = 0; i < variables.length; i++) {
     args[i] = Zig.valueToCode(block, 'ARG' + i, Zig.ORDER_NONE) || 'null';
   }
-  let code = funcName + '(' + args.join(', ') + ')';
+  let code = [
+    'try ',
+    funcName,
+    '(',
+    args.join(', '),
+    ')',
+  ].join('');
   return [code, Zig.ORDER_UNARY_POSTFIX];
 };
 
