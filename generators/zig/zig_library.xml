@@ -52,4 +52,58 @@
         <field name="HUE">120</field>
       </block>
     </value>
+  </block><block type="factory_base" id="9:`h3JLDH.SaQrv{vg,#" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">field</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="c(7*{~HvwZr9,aZy%vxF">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="8Da4o5,}.%b.m/?/_im^">
+            <field name="TEXT">field</field>
+          </block>
+        </statement>
+        <next>
+          <block type="input_value" id="/A9^tz0~W#hRc_aT!o!v">
+            <field name="INPUTNAME">name</field>
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_input" id="?*pt^P~h~8rcMhn#Qlqx">
+                <field name="TEXT">name</field>
+                <field name="FIELDNAME">NAME</field>
+                <next>
+                  <block type="field_static" id="dV2jZ,!{wmVb|3Zr_-Th">
+                    <field name="TEXT">value</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="TYPE">
+              <shadow type="type_null" id="8Mz_3Uw@h(GXz!@;43ow"></shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="T*[wPh(,6Nm(R@R@8TBA" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="vh^WY|G`MqgH;ochSy{[" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="iV=tesI3A]EODV_V9pV["></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="hYbX9+O*$z[YL*DOptHC">
+        <mutation colour="#5ba55b"></mutation>
+        <field name="HUE">120</field>
+      </block>
+    </value>
   </block></xml>
