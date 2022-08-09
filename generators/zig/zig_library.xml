@@ -1,0 +1,55 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="factory_base" id="0O6LVVqhS=NU^j3Gr-}$" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="NONE"></mutation>
+    <field name="NAME">every</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">NONE</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="!wb3PfBov*|=xu!YzpOA">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="3a1oZH`D]h5!:lJvy5eD">
+            <field name="TEXT">every</field>
+            <next>
+              <block type="field_number" id="!?`/3|N`dq~$Tyl}R(zK">
+                <field name="VALUE">10</field>
+                <field name="FIELDNAME">DURATION</field>
+                <field name="MIN">0</field>
+                <field name="MAX">Infinity</field>
+                <field name="PRECISION">0</field>
+                <next>
+                  <block type="field_static" id="?#lfUZS6O{77Hjc#WjCx">
+                    <field name="TEXT">seconds</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_statement" id=";h{,M+^$1nRV*Pmjnd#P">
+            <field name="INPUTNAME">STMTS</field>
+            <field name="ALIGN">LEFT</field>
+            <value name="TYPE">
+              <shadow type="type_null" id="fi,H0t,^FS@R-SGB]TiE"></shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="U8?mrHl,,7%XSbA3r-E*" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="A0s{]irn3uxd_=GMK~#I" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="fEjiV.)^uEFAa*x|y}jr">
+        <mutation colour="#5ba55b"></mutation>
+        <field name="HUE">120</field>
+      </block>
+    </value>
+  </block></xml>
