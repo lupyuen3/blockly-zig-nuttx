@@ -24,8 +24,9 @@ goog.require('Blockly.Zig.texts');
 goog.require('Blockly.Zig.variables');
 goog.require('Blockly.Zig.variablesDynamic');
 
-// Zig Custom Blocks
+// Zig Custom Blocks and Code Generators
 goog.require('Blockly.Zig.blocks');
+goog.require('Blockly.Zig.functions');
 
 // Compose Message Block
 goog.require('Blockly.Zig.composeMessage');
