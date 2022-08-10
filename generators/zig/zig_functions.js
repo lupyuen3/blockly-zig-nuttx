@@ -71,13 +71,13 @@ Zig['bme280'] = function(block) {
     : 'struct_sensor_baro';
 
   // Compose the code
-  const code = [
-    `try sen.readSensor(   // Read BME280 Sensor`,
+  const code = alignComments([
+    `try sen.readSensor(  // Read BME280 Sensor`,
     Blockly.Zig.INDENT + `c.${struct},  // Sensor Data Struct`,
     Blockly.Zig.INDENT + `"${field}",  // Sensor Data Field`,
     Blockly.Zig.INDENT + `"${path}"  // Path of Sensor Device`,
     `)`,
-  ].join('\n');
+  ]).join('\n');
   return [code, Blockly.Zig.ORDER_UNARY_POSTFIX];
 };
 
@@ -93,3 +93,37 @@ Zig['transmit_msg'] = function(block) {
   ].join('\n');
   return code;
 };
+
+// Align the "//" comments by inserting spaces, except first line
+function alignComments(lines) {
+  // Find the max column of "//"
+  var col = -1;
+  var firstLine = true;
+  for (const line of lines) {
+    const i = line.indexOf('//');
+    if (firstLine || i < 0) { 
+        firstLine = false;
+        continue; 
+    }
+    col = Math.max(col, i);
+  }
+  if (col < 0) { return lines; }
+
+  // Insert spaces before "//" to align them
+  var result = [];
+  firstLine = true;
+  for (const line of lines) {
+    const i = line.indexOf('//');
+    if (firstLine || i < 0) { 
+        firstLine = false;
+        result.push(line); 
+        continue; 
+    }
+    const line2 = line.replace(
+      '//', 
+      ' '.repeat(col - i) + '//'
+    );
+    result.push(line2);
+  }
+  return result;
+}
