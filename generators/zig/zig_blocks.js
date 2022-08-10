@@ -59,7 +59,7 @@ Zig['blocks'] =
   ],
   "inputsInline": true,
   "output": null,
-  "colour": 120,
+  "colour": 180,
   "tooltip": "",
   "helpUrl": ""
 },
@@ -98,7 +98,7 @@ Zig['blocks'] =
     }
   ],
   "output": "Number",
-  "colour": 330,
+  "colour": 230,
   "tooltip": "",
   "helpUrl": ""
 },

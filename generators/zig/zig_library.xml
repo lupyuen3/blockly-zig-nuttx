@@ -102,8 +102,8 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="hYbX9+O*$z[YL*DOptHC">
-        <mutation colour="#5ba55b"></mutation>
-        <field name="HUE">120</field>
+        <mutation colour="#5ba5a5"></mutation>
+        <field name="HUE">180</field>
       </block>
     </value>
   </block><block type="factory_base" id="W`^{|I[H!=.BM`g^9/8Q" deletable="false" movable="false" x="10" y="10">
@@ -175,8 +175,8 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="EKywch#RON4s)sY(vQ;%">
-        <mutation colour="#a55b80"></mutation>
-        <field name="HUE">330</field>
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
       </block>
     </value>
   </block><block type="factory_base" id="~l[7|gnC(J52(K8.lZH$" deletable="false" movable="false" x="10" y="10">
