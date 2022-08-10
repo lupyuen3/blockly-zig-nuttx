@@ -106,4 +106,130 @@
         <field name="HUE">120</field>
       </block>
     </value>
+  </block><block type="factory_base" id="W`^{|I[H!=.BM`g^9/8Q" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">bme280</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="#ONs[z+b9in[p~7%s%L)">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="UiY2~-|Cwte-GxQ-=i-_">
+            <field name="TEXT">BME280 Sensor</field>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="xmiR4lL/vRG}?!NrV2@=">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="Ca^P!HC=PxNNQ3Ii_^Ub">
+                <field name="TEXT">read</field>
+                <next>
+                  <block type="field_dropdown" id=".AQbJo]Ev+bb8!K-+_=4">
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                    <field name="FIELDNAME">FIELD</field>
+                    <field name="USER0">temperature</field>
+                    <field name="CPU0">temperature</field>
+                    <field name="USER1">pressure</field>
+                    <field name="CPU1">pressure</field>
+                    <field name="USER2">humidity</field>
+                    <field name="CPU2">humidity</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="input_dummy" id="-Io4X*G%VWW~J-~6![_~">
+                <field name="ALIGN">LEFT</field>
+                <statement name="FIELDS">
+                  <block type="field_static" id="Q{,;U+G(|4VV0:QfS|m2">
+                    <field name="TEXT">from</field>
+                    <next>
+                      <block type="field_input" id="c`7C0}m3]RC+TCqrItnO">
+                        <field name="TEXT">/dev/sensor/sensor_baro0</field>
+                        <field name="FIELDNAME">PATH</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="d5E[Du@Ym2Kr1DkUUS.J" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="t/,IaSnx*8GrzIT8+P.$" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id=":}Oz.?18NuB1.)*=:L,^"></shadow>
+      <block type="type_number" id="MFP4m1Qzx/g?-UVtV9r;"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="EKywch#RON4s)sY(vQ;%">
+        <mutation colour="#a55b80"></mutation>
+        <field name="HUE">330</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="~l[7|gnC(J52(K8.lZH$" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="NONE"></mutation>
+    <field name="NAME">transmit_msg</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">NONE</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="1[8mo=88$J=K5rc]Scv)">
+        <field name="INPUTNAME">MSG</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="NeWrWM~ECF|5-:d#OC3)">
+            <field name="TEXT">transmit message</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id=",6}8Xq(MUjQo,rNFyMVQ"></shadow>
+        </value>
+        <next>
+          <block type="input_dummy" id="cgyR)n=VqNWmV.[cGE[(">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="k4mjQv,;ux%`(`!~ClUN">
+                <field name="TEXT">to</field>
+                <next>
+                  <block type="field_dropdown" id="O~Lh)rvsAru|L3:S!S`,">
+                    <mutation options="[&quot;text&quot;]"></mutation>
+                    <field name="FIELDNAME">TO</field>
+                    <field name="USER0">LoRaWAN</field>
+                    <field name="CPU0">lorawan</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="gPGhDO0O/+t34ja0:B4." deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="1U@Yn$~T5Ka0K;4?0Ka%" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="|oZvMvNFuSNFsWcU@y;w">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
   </block></xml>

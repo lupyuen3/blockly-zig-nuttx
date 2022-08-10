@@ -46,6 +46,68 @@ var zig_blocks =
   "colour": 120,
   "tooltip": "",
   "helpUrl": ""
+},
+{
+  "type": "bme280",
+  "message0": "BME280 Sensor %1 read %2 %3 from %4",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "FIELD",
+      "options": [
+        [
+          "temperature",
+          "temperature"
+        ],
+        [
+          "pressure",
+          "pressure"
+        ],
+        [
+          "humidity",
+          "humidity"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_input",
+      "name": "PATH",
+      "text": "/dev/sensor/sensor_baro0"
+    }
+  ],
+  "output": "Number",
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "transmit_msg",
+  "message0": "transmit message %1 to %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "MSG"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "TO",
+      "options": [
+        [
+          "LoRaWAN",
+          "lorawan"
+        ]
+      ]
+    }
+  ],
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
 }]
 // End Block Exporter
 ;
