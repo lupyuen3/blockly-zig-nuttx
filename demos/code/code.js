@@ -483,6 +483,26 @@ Code.init = function() {
 
   Code.loadBlocks('');
 
+  //// TODO: Added code here
+  //  Load the Zig Custom Blocks.
+  var blocks = Blockly.Zig.blocks;  // From generators/zig/zig_blocks.js
+  // For each Block...
+  blocks.forEach(block => {
+    // Register the Block with Blockly.
+    Blockly.Blocks[block.type] = {
+      init: function() {
+        this.jsonInit(block);
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        var thisBlock = this;
+        // this.setTooltip(function() {
+        //   return 'Add a number to variable "%1".'.replace('%1',
+        //       thisBlock.getFieldValue('VAR'));
+        // });
+      }
+    };    
+  });
+  //// End of added code
+
   if ('BlocklyStorage' in window) {
     // Hook a save function onto unload.
     BlocklyStorage.backupOnUnload(Code.workspace);

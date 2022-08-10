@@ -13,6 +13,7 @@
 
 goog.module('Blockly.Zig.all');
 
+// Common Blocks
 goog.require('Blockly.Zig.colour');
 goog.require('Blockly.Zig.lists');
 goog.require('Blockly.Zig.logic');
@@ -23,3 +24,9 @@ goog.require('Blockly.Zig.texts');
 goog.require('Blockly.Zig.variables');
 goog.require('Blockly.Zig.variablesDynamic');
 
+// Zig Custom Blocks and Code Generators
+goog.require('Blockly.Zig.blocks');
+goog.require('Blockly.Zig.functions');
+
+// Compose Message Block
+goog.require('Blockly.Zig.composeMessage');
