@@ -28,5 +28,5 @@ Zig['variables_set'] = function(block) {
       Zig.valueToCode(block, 'VALUE', Zig.ORDER_ASSIGNMENT) || '0';
   const varName =
       Zig.nameDB_.getName(block.getFieldValue('VAR'), NameType.VARIABLE);
-  return `const ${varName}: f32 = ${argument0};\n`;
+  return `const ${varName} = ${argument0};\n`;
 };
