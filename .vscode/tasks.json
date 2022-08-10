@@ -6,7 +6,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "set -x && /usr/bin/npm run build && cp build/*compressed* . && cp *compressed* /mnt/c/pinecone/blockly-zig-nuttx",
+            "command": "set -x && /usr/bin/npm run build && cp build/*compressed* . && cp *compressed* /mnt/c/pinecone/blockly-zig-nuttx && cp demos/code/*.* /mnt/c/pinecone/blockly-zig-nuttx/demos/code && cp generators/zig.js /mnt/c/pinecone/blockly-zig-nuttx/generators && cp generators/zig/* /mnt/c/pinecone/blockly-zig-nuttx/generators/zig ",
             "problemMatcher": "$tsc",
             "group": {
                 "kind": "build",
