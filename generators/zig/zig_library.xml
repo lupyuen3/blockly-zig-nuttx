@@ -180,10 +180,10 @@
       </block>
     </value>
   </block><block type="factory_base" id="~l[7|gnC(J52(K8.lZH$" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="NONE"></mutation>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">transmit_msg</field>
     <field name="INLINE">AUTO</field>
-    <field name="CONNECTIONS">NONE</field>
+    <field name="CONNECTIONS">BOTH</field>
     <statement name="INPUTS">
       <block type="input_value" id="1[8mo=88$J=K5rc]Scv)">
         <field name="INPUTNAME">MSG</field>
@@ -224,6 +224,18 @@
     <value name="HELPURL">
       <block type="text" id="1U@Yn$~T5Ka0K;4?0Ka%" deletable="false" movable="false">
         <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="E;RoGfl/$3xew1Z[k%iS"></shadow>
+      <block type="type_other" id="1M!zs+*{%,a|dzl-8j(2">
+        <field name="TYPE">Action</field>
+      </block>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="H@ZyLif0fc*Axe_4?E7T"></shadow>
+      <block type="type_other" id="ZN.%?9[YQB=yE+)OnO$,">
+        <field name="TYPE">Action</field>
       </block>
     </value>
     <value name="COLOUR">

@@ -1,7 +1,23 @@
-/// Custom blocks exported from Block Exporter based on zig_library.xml.
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview Zig Blocks
+ * @suppress {checkTypes|visibility}
+ */
+'use strict';
+
+goog.module('Blockly.Zig.blocks');
+
+const Zig = goog.require('Blockly.Zig');
+
+/// Custom Blocks exported from Block Exporter based on zig_library.xml.
+/// Exposed as Blockly.Zig.blocks. Read by demos/code/code.js.
 /// See zig_functions.js for Code Generator Functions.
-var zig_blocks =
-// Begin Block Exporter
+Zig['blocks'] =
+// Begin Paste from Block Exporter
 [{
   "type": "every",
   "message0": "every %1 seconds %2 %3",
@@ -105,9 +121,11 @@ var zig_blocks =
       ]
     }
   ],
+  "previousStatement": "Action",
+  "nextStatement": "Action",
   "colour": 230,
   "tooltip": "",
   "helpUrl": ""
 }]
-// End Block Exporter
+// End Paste from Block Exporter
 ;
