@@ -1,35 +1,74 @@
 /**
  * @license
- * Copyright 2017 Google LLC
  * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview Compose Message block
+ * @suppress {checkTypes|visibility}
  */
 'use strict';
 
-goog.provide('Blockly.Constants.Coap');
+goog.module('Blockly.Zig.composeMessage');
 
-goog.require('Blockly.Blocks');
-goog.require('Blockly');
+/* eslint-disable-next-line no-unused-vars */
+const AbstractEvent = goog.requireType('Blockly.Events.Abstract');
+const ContextMenu = goog.require('Blockly.ContextMenu');
+const Events = goog.require('Blockly.Events');
+const Procedures = goog.require('Blockly.Procedures');
+const Variables = goog.require('Blockly.Variables');
+const Xml = goog.require('Blockly.Xml');
+const xmlUtils = goog.require('Blockly.utils.xml');
+const {Align} = goog.require('Blockly.Input');
+/* eslint-disable-next-line no-unused-vars */
+const {Block} = goog.requireType('Blockly.Block');
+/* eslint-disable-next-line no-unused-vars */
+const {BlockDefinition} = goog.requireType('Blockly.blocks');
+const {config} = goog.require('Blockly.config');
+/* eslint-disable-next-line no-unused-vars */
+const {FieldCheckbox} = goog.require('Blockly.FieldCheckbox');
+const {FieldLabel} = goog.require('Blockly.FieldLabel');
+const {FieldTextInput} = goog.require('Blockly.FieldTextInput');
+const {Msg} = goog.require('Blockly.Msg');
+const {Mutator} = goog.require('Blockly.Mutator');
+const {Names} = goog.require('Blockly.Names');
+/* eslint-disable-next-line no-unused-vars */
+const {VariableModel} = goog.requireType('Blockly.VariableModel');
+/* eslint-disable-next-line no-unused-vars */
+const {Workspace} = goog.requireType('Blockly.Workspace');
+const {defineBlocks} = goog.require('Blockly.common');
+/** @suppress {extraRequire} */
+goog.require('Blockly.Comment');
+/** @suppress {extraRequire} */
+goog.require('Blockly.Warning');
 
+
+/**
+ * A dictionary of the block definitions provided by this module.
+ * @type {!Object<string, !BlockDefinition>}
+ */
+const blocks = {};
+exports.blocks = blocks;
 
 /**
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['TEXTS_HUE']. (2018 April 5)
  */
-Blockly.Constants.Coap.HUE = 120;
+blocks.HUE = 120;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   {
-    "type": "coap",
+    "type": "compose_msg",
     "message0": "",
     "output": "String",
     "style": "text_blocks",  //  TODO
     "helpUrl": "%{BKY_TEXT_JOIN_HELPURL}",
-    "tooltip": "Create the payload for a CoAP message",
-    "mutator": "coap_mutator"
+    "tooltip": "Compose Message",
+    "mutator": "compose_msg_mutator"
   },
   {
-    "type": "coap_container",
-    "message0": "create coap with %1 %2",
+    "type": "compose_msg_container",
+    "message0": "compose message %1 %2",
     "args0": [{
       "type": "input_dummy"
     },
@@ -38,27 +77,27 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "name": "STACK"
     }],
     "style": "text_blocks",  //  TODO
-    "tooltip": "CoAP payload",
+    "tooltip": "Message Fields",
     "enableContextMenu": false
   },
   {
-    "type": "coap_item",
+    "type": "compose_msg_item",
     "message0": "item",
     "previousStatement": null,
     "nextStatement": null,
     "style": "text_blocks",  //  TODO
-    "tooltip": "CoAP item",
+    "tooltip": "Message Field",
     "enableContextMenu": false
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 
 /**
- * Mixin for mutator functions in the 'coap_mutator' extension.
+ * Mixin for mutator functions in the 'compose_msg_mutator' extension.
  * @mixin
  * @augments Blockly.Block
  * @package
  */
-Blockly.Constants.Coap.COAP_MUTATOR_MIXIN = {
+blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
   /**
    * Create XML to represent number of text inputs.
    * @return {!Element} XML storage element.
@@ -85,11 +124,11 @@ Blockly.Constants.Coap.COAP_MUTATOR_MIXIN = {
    * @this Blockly.Block
    */
   decompose: function(workspace) {
-    var containerBlock = workspace.newBlock('coap_container');
+    var containerBlock = workspace.newBlock('compose_msg_container');
     containerBlock.initSvg();
     var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.itemCount_; i++) {
-      var itemBlock = workspace.newBlock('coap_item');
+      var itemBlock = workspace.newBlock('compose_msg_item');
       itemBlock.initSvg();
       connection.connect(itemBlock.previousConnection);
       connection = itemBlock.nextConnection;
@@ -158,7 +197,7 @@ Blockly.Constants.Coap.COAP_MUTATOR_MIXIN = {
       if (!this.getInput('ADD' + i)) {
         var input = this.appendValueInput('ADD' + i);
         if (i == 0) {
-          input.appendField('create coap with');
+          input.appendField('compose message');
         }
       }
     }
@@ -174,16 +213,16 @@ Blockly.Constants.Coap.COAP_MUTATOR_MIXIN = {
  * Performs final setup of a text_join block.
  * @this Blockly.Block
  */
-Blockly.Constants.Coap.COAP_EXTENSION = function() {
+blocks.COMPOSE_MSG_EXTENSION = function() {
   // Add the quote mixin for the itemCount_ = 0 case.
-  this.mixin(Blockly.Constants.Text.QUOTE_IMAGE_MIXIN);
+  //// TODO: this.mixin(Blockly.Constants.Text.QUOTE_IMAGE_MIXIN);
   // Initialize the mutator values.
   this.itemCount_ = 2;
   this.updateShape_();
   // Configure the mutator UI.
-  this.setMutator(new Blockly.Mutator(['coap_item']));
+  this.setMutator(new Blockly.Mutator(['compose_msg_item']));
 };
 
-Blockly.Extensions.registerMutator('coap_mutator',
-    Blockly.Constants.Coap.COAP_MUTATOR_MIXIN,
-    Blockly.Constants.Coap.COAP_EXTENSION);
+Blockly.Extensions.registerMutator('compose_msg_mutator',
+    blocks.COMPOSE_MSG_MUTATOR_MIXIN,
+    blocks.COMPOSE_MSG_EXTENSION);
