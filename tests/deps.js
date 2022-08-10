@@ -323,7 +323,7 @@ goog.addDependency('../../generators/python/text.js', ['Blockly.Python.texts'], 
 goog.addDependency('../../generators/python/variables.js', ['Blockly.Python.variables'], ['Blockly.Names', 'Blockly.Python'], {'lang': 'es6', 'module': 'goog'});
 goog.addDependency('../../generators/python/variables_dynamic.js', ['Blockly.Python.variablesDynamic'], ['Blockly.Python', 'Blockly.Python.variables'], {'lang': 'es6', 'module': 'goog'});
 goog.addDependency('../../generators/zig.js', ['Blockly.Zig'], ['Blockly.Generator', 'Blockly.Names', 'Blockly.Variables', 'Blockly.inputTypes', 'Blockly.utils.string'], {'lang': 'es6', 'module': 'goog'});
-goog.addDependency('../../generators/zig/all.js', ['Blockly.Zig.all'], ['Blockly.Zig.blocks', 'Blockly.Zig.colour', 'Blockly.Zig.composeMessage', 'Blockly.Zig.lists', 'Blockly.Zig.logic', 'Blockly.Zig.loops', 'Blockly.Zig.math', 'Blockly.Zig.procedures', 'Blockly.Zig.texts', 'Blockly.Zig.variables', 'Blockly.Zig.variablesDynamic'], {'module': 'goog'});
+goog.addDependency('../../generators/zig/all.js', ['Blockly.Zig.all'], ['Blockly.Zig.blocks', 'Blockly.Zig.colour', 'Blockly.Zig.composeMessage', 'Blockly.Zig.functions', 'Blockly.Zig.lists', 'Blockly.Zig.logic', 'Blockly.Zig.loops', 'Blockly.Zig.math', 'Blockly.Zig.procedures', 'Blockly.Zig.texts', 'Blockly.Zig.variables', 'Blockly.Zig.variablesDynamic'], {'module': 'goog'});
 goog.addDependency('../../generators/zig/colour.js', ['Blockly.Zig.colour'], ['Blockly.Zig'], {'lang': 'es6', 'module': 'goog'});
 goog.addDependency('../../generators/zig/compose_msg.js', ['Blockly.Zig.composeMessage'], ['Blockly.Comment', 'Blockly.ContextMenu', 'Blockly.Events', 'Blockly.FieldCheckbox', 'Blockly.FieldLabel', 'Blockly.FieldTextInput', 'Blockly.Input', 'Blockly.Msg', 'Blockly.Mutator', 'Blockly.Names', 'Blockly.Procedures', 'Blockly.Variables', 'Blockly.Warning', 'Blockly.Xml', 'Blockly.common', 'Blockly.config', 'Blockly.utils.xml'], {'lang': 'es6', 'module': 'goog'});
 goog.addDependency('../../generators/zig/lists.js', ['Blockly.Zig.lists'], ['Blockly.Names', 'Blockly.Zig'], {'lang': 'es6', 'module': 'goog'});
@@ -335,6 +335,7 @@ goog.addDependency('../../generators/zig/text.js', ['Blockly.Zig.texts'], ['Bloc
 goog.addDependency('../../generators/zig/variables.js', ['Blockly.Zig.variables'], ['Blockly.Names', 'Blockly.Zig'], {'lang': 'es6', 'module': 'goog'});
 goog.addDependency('../../generators/zig/variables_dynamic.js', ['Blockly.Zig.variablesDynamic'], ['Blockly.Zig', 'Blockly.Zig.variables'], {'lang': 'es6', 'module': 'goog'});
 goog.addDependency('../../generators/zig/zig_blocks.js', ['Blockly.Zig.blocks'], ['Blockly.Zig'], {'lang': 'es6', 'module': 'goog'});
+goog.addDependency('../../generators/zig/zig_functions.js', ['Blockly.Zig.functions'], ['Blockly.Zig'], {'lang': 'es6', 'module': 'goog'});
 goog.addDependency('base.js', [], []);
 goog.addDependency('base_minimal.js', [], []);
 goog.addDependency('goog.js', [], [], {'lang': 'es6', 'module': 'es6'});

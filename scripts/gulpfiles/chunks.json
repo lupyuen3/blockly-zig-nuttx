@@ -7,7 +7,7 @@
     "all2:11:blockly",
     "all3:11:blockly",
     "all4:11:blockly",
-    "all5:13:blockly"
+    "all5:14:blockly"
   ],
   "js": [
     "./core/inject.js",
@@ -336,6 +336,7 @@
     "./generators/dart/colour.js",
     "./generators/dart/all.js",
     "./generators/zig/compose_msg.js",
+    "./generators/zig/zig_functions.js",
     "./generators/zig/zig_blocks.js",
     "./generators/zig/variables_dynamic.js",
     "./generators/zig/variables.js",
