@@ -715,9 +715,7 @@ https://github.com/lupyuen3/blockly-zig-nuttx/blob/b6dbd66283ef14881337680205017
 
 # Code Generator for Custom Extension
 
-TODO
-
-This Custom Extension...
+Our Custom Extension for Compose Message...
 
 ![Compose Message](https://lupyuen.github.io/images/visual-block7b.jpg)
 
@@ -731,7 +729,7 @@ const msg = try composeCbor(.{  // Compose CBOR Message
 });
 ```
 
-Here's the implementation: [generators/zig/zig_functions.js](generators/zig/zig_functions.js#L16-L32)
+Here's the implementation of our Code Generator: [generators/zig/zig_functions.js](generators/zig/zig_functions.js#L16-L32)
 
 ```zig
 // Generate CBOR Message
@@ -757,15 +755,17 @@ Zig['compose_msg'] = function(block) {
 };
 ```
 
-TODO
+Each Message Field...
+
+![Message Field](https://lupyuen.github.io/images/visual-block9.jpg)
+
+Will generate Zig code like this...
 
 ```zig
 "t", temperature,
 ```
 
-TODO
-
-[generators/zig/zig_functions.js](generators/zig/zig_functions.js#L34-L40)
+Here's the implementation of our Code Generator: [generators/zig/zig_functions.js](generators/zig/zig_functions.js#L34-L40)
 
 ```zig
 // Generate a field for CBOR message
