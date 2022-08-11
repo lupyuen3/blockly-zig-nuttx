@@ -659,6 +659,16 @@ TODO
 
 TODO: https://developers.google.com/blockly/guides/create-custom-blocks/extensions
 
+![Compose Message](https://lupyuen.github.io/images/visual-block7a.jpg)
+
+TODO
+
+![Compose Message](https://lupyuen.github.io/images/visual-block7b.jpg)
+
+TODO
+
+![Transmit Message](https://lupyuen.github.io/images/visual-block7c.jpg)
+
 # Complex Sensor App
 
 TODO
