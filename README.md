@@ -416,18 +416,21 @@ Blockly works OK with Mobile Web Browsers too...
 
 # Custom Block
 
-TODO
+Let's create a Custom Block in Blockly for our Bosch BME280 Sensor...
 
 ![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block1.jpg)
 
-TODO
+The Blocks above will generate this code...
 
 ```zig
+// Read the Temperature from BME280 Sensor
 const temperature = try sen.readSensor(  // Read BME280 Sensor
   c.struct_sensor_baro,       // Sensor Data Struct
   "temperature",              // Sensor Data Field
   "/dev/sensor/sensor_baro0"  // Path of Sensor Device
 );
+
+// Print the Temperature
 debug("temperature={}", .{ temperature });
 ```
 
