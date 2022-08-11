@@ -655,6 +655,18 @@ TODO
 
 TODO
 
+# Custom Extension / Mutator
+
+TODO: https://developers.google.com/blockly/guides/create-custom-blocks/extensions
+
+# Complex Sensor App
+
+TODO
+
+![Complex Sensor App](https://lupyuen.github.io/images/visual-block6.jpg)
+
+Emit this code...
+
 ```zig
 /// Main Function
 pub fn main() !void {
@@ -694,7 +706,7 @@ pub fn main() !void {
 }
 ```
 
-TODO
+Which runs OK with NuttX on BL602 and BME280...
 
 ```text
 NuttShell (NSH) NuttX-10.3.0
@@ -756,10 +768,6 @@ humidity=66.87
 composeCbor
 transmitLorawan
 ```
-
-# Custom Extension / Mutator
-
-TODO: https://developers.google.com/blockly/guides/create-custom-blocks/extensions
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 
