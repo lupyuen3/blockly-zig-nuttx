@@ -414,9 +414,48 @@ Blockly works OK with Mobile Web Browsers too...
 
 ![Blocky on Mobile Web Browser](https://lupyuen.github.io/images/blockly-mobile.jpg)
 
-# TODO
+# Custom Block
 
-TODO: Implement the Zig Code Generator for the other Blocks
+TODO
+
+![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block1.jpg)
+
+TODO
+
+```zig
+const temperature = try sen.readSensor(  // Read BME280 Sensor
+  c.struct_sensor_baro,       // Sensor Data Struct
+  "temperature",              // Sensor Data Field
+  "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+);
+debug("temperature={}", .{ temperature });
+```
+
+# Create Custom Block
+
+TODO
+
+![Create Custom Block](https://lupyuen.github.io/images/visual-block3.jpg)
+
+Download Block Library XML
+
+# Export Custom Block
+
+TODO
+
+![Export Custom Block](https://lupyuen.github.io/images/visual-block4.jpg)
+
+# Load Custom Block
+
+TODO
+
+# Code Generator for Custom Block
+
+TODO
+
+# Test Custom Block
+
+TODO
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 
