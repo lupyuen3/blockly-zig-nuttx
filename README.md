@@ -651,6 +651,10 @@ Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server. We should see 
 
 TODO
 
+![Custom Sensor Blocks](https://lupyuen.github.io/images/visual-block8.jpg)
+
+TODO
+
 ![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block2.jpg)
 
 TODO
