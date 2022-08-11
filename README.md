@@ -655,6 +655,47 @@ TODO
 
 TODO
 
+```zig
+/// Main Function
+pub fn main() !void {
+
+  // Every 10 seconds...
+  while (true) {
+    const temperature = try sen.readSensor(  // Read BME280 Sensor
+      c.struct_sensor_baro,       // Sensor Data Struct
+      "temperature",              // Sensor Data Field
+      "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+    );
+    debug("temperature={}", .{ temperature });
+    const pressure = try sen.readSensor(  // Read BME280 Sensor
+      c.struct_sensor_baro,       // Sensor Data Struct
+      "pressure",                 // Sensor Data Field
+      "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+    );
+    debug("pressure={}", .{ pressure });
+    const humidity = try sen.readSensor(  // Read BME280 Sensor
+      c.struct_sensor_humi,       // Sensor Data Struct
+      "humidity",                 // Sensor Data Field
+      "/dev/sensor/sensor_humi0"  // Path of Sensor Device
+    );
+    debug("humidity={}", .{ humidity });
+    const msg = try composeCbor(.{  // Compose CBOR Message
+      "t", temperature,
+      "p", pressure,
+      "h", humidity,
+    });
+
+    // Transmit message to LoRaWAN
+    try transmitLorawan(msg);
+
+    // Wait 10 seconds
+    _ = c.sleep(10);
+  }
+}
+```
+
+TODO
+
 ```text
 NuttShell (NSH) NuttX-10.3.0
 nsh> sensortest visual
