@@ -641,27 +641,31 @@ goog.require('Blockly.Zig.composeMessage');
 
 `Blockly.Zig.composeMessage` is a Custom Extension / Mutator for Blockly that renders our "Compose Message" Block. We'll cover this in a while.
 
-Rebuild Blockly according to the instructions posted above.
-
 # Test Custom Block
 
-TODO
+Rebuild Blockly according to the instructions posted above.
 
-Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server. We should see this...
+Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server.
+
+In the Blocks Toolbox, we should see the Sensors Category with our Custom Blocks inside...
 
 [lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
 
-TODO
-
 ![Custom Sensor Blocks](https://lupyuen.github.io/images/visual-block8.jpg)
 
-TODO
+Let's read the Temperature from BME280 Sensor and print it.
+
+Drag-n-drop the BME280 Sensor Block as shown below...
 
 ![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block2.jpg)
 
-TODO
+We should see this Zig code generated for our BME280 Sensor Block.
 
-Which runs OK with NuttX and BME280 on BL602...
+Copy the contents of the Main Function and paste here...
+
+[visual-zig-nuttx/blob/main/visual.zig](https://github.com/lupyuen/visual-zig-nuttx/blob/main/visual.zig)
+
+The generated Zig code should correctly read the Temperature from BME280 Sensor...
 
 ```text
 NuttShell (NSH) NuttX-10.3.0
@@ -670,6 +674,8 @@ Zig Sensor Test
 Start main
 temperature=31.32
 ```
+
+(Tested with NuttX and BME280 on BL602)
 
 # Custom Extension / Mutator
 
