@@ -691,7 +691,7 @@ temperature=31.32
 
 # Custom Extension
 
-The Compose Message Block needs a [Custom Extension / Mutator](https://developers.google.com/blockly/guides/create-custom-blocks/extensions) in Blockly because it has a variable number of slots (for the Message Fields)...
+The Compose Message Block needs a [Custom Extension](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#extensions) in Blockly because it has a variable number of slots (for the Message Fields)...
 
 ![Compose Message](https://lupyuen.github.io/images/visual-block7a.jpg)
 
@@ -699,15 +699,17 @@ This is how we define the Blocks in our Custom Extension...
 
 https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L59-L92
 
-Here's the Mixin for Mutator Functions...
+Our Custom Extension needs a [Mutator](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#mutators) that will save the attached Message Field.
+
+Here's the [Mixin](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#mixins) that implements the Mutator for our Custom Extension...
 
 https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L94-L210
 
-And our Custom Extension...
+And here's our [Custom Extension](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#extensions) that bundles the above Blocks, Mutator and Mixin...
 
 https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L212-L228
 
-[(We copied the code from the Text Join Block)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/blocks/text.js#L712-L860)
+[(We copied our Custom Extension from the Text Join Block)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/blocks/text.js#L712-L860)
 
 [(More about Blockly Extensions and Mutators)](https://developers.google.com/blockly/guides/create-custom-blocks/extensions)
 
