@@ -779,10 +779,6 @@ Zig['field'] = function(block) {
 
 TODO
 
-# Complex Sensor App
-
-TODO
-
 ![Complex Sensor App](https://lupyuen.github.io/images/visual-block6.jpg)
 
 Emits this Zig program...
