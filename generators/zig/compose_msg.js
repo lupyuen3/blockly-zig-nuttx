@@ -99,7 +99,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
  */
 blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
   /**
-   * Create XML to represent number of text inputs.
+   * Create XML to represent the Message Fields.
    * @return {!Element} XML storage element.
    * @this {Blockly.Block}
    */
@@ -109,7 +109,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
     return container;
   },
   /**
-   * Parse XML to restore the text inputs.
+   * Parse XML to restore the Message Fields.
    * @param {!Element} xmlElement XML storage element.
    * @this {Blockly.Block}
    */
@@ -214,11 +214,11 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
  * @this {Blockly.Block}
  */
 blocks.COMPOSE_MSG_EXTENSION = function() {
-  // Add the quote mixin for the itemCount_ = 0 case.
-  //// TODO: this.mixin(Blockly.Constants.Text.QUOTE_IMAGE_MIXIN);
+
   // Initialize the mutator values.
   this.itemCount_ = 2;
   this.updateShape_();
+
   // Configure the mutator UI.
   this.setMutator(new Blockly.Mutator(['compose_msg_item']));
 };
