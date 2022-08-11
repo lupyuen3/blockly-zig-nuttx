@@ -691,27 +691,25 @@ temperature=31.32
 
 # Custom Extension / Mutator
 
-TODO
+The Compose Message Block needs a [Custom Extension / Mutator](https://developers.google.com/blockly/guides/create-custom-blocks/extensions) in Blockly because it has a variable number of slots (for the Message Fields)...
 
-["Extensions and Mutators"](https://developers.google.com/blockly/guides/create-custom-blocks/extensions)
+![Compose Message](https://lupyuen.github.io/images/visual-block7a.jpg)
 
-[generators/zig/compose_msg.js](generators/zig/compose_msg.js)
-
-Define Blocks:
+This is how we define the Blocks in our Custom Extension...
 
 https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L59-L92
 
-Mixin for Mutator Functions:
+Here's the Mixin for Mutator Functions...
 
 https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L94-L210
 
-Extension:
+And our Custom Extension...
 
 https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L212-L228
 
-[(We copied from Text Join Block)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/blocks/text.js#L712-L860)
+[(We copied the code from the Text Join Block)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/blocks/text.js#L712-L860)
 
-![Compose Message](https://lupyuen.github.io/images/visual-block7a.jpg)
+[(More about Blockly Extensions and Mutators)](https://developers.google.com/blockly/guides/create-custom-blocks/extensions)
 
 # Code Generator for Custom Extension
 
@@ -755,6 +753,12 @@ Zig['compose_msg'] = function(block) {
   ].join('\n');
   return [code, Blockly.Zig.ORDER_UNARY_POSTFIX];
 };
+```
+
+TODO
+
+```zig
+"t", temperature,
 ```
 
 TODO
