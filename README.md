@@ -570,7 +570,7 @@ This creates a Toolbox Category named "Sensors" with our Custom Blocks inside.
 
 Remember that our BME280 Sensor Block...
 
-![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block1.jpg)
+![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block5.jpg)
 
 Will generate this Zig expression...
 
