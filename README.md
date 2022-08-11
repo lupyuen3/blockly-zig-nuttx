@@ -438,9 +438,9 @@ debug("temperature={}", .{ temperature });
 
 To create our Custom Block, browse to the Blockly Developer Tools...
 
-https://blockly-demo.appspot.com/static/demos/blockfactory/index.html
+[blockly-demo.appspot.com/static/demos/blockfactory/index.html](https://blockly-demo.appspot.com/static/demos/blockfactory/index.html)
 
-Assemble our BME280 Sensor Block like so...
+Drag-and-drop from "Input", "Field" and "Type" to assemble our BME280 Sensor Block...
 
 ![Create Custom Block](https://lupyuen.github.io/images/visual-block3.jpg)
 
@@ -452,7 +452,7 @@ When we're done, click "Download Block Library"
 
 Save the downloaded XML so that we can "Import Block Library" and edit our Block in future...
 
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_library.xml
+[generators/zig/zig_library.xml](generators/zig/zig_library.xml)
 
 # Export Custom Block
 
@@ -468,17 +468,15 @@ For "Export Settings" > "Block Definitions", select "JSON Format"
 
 "Export Preview" shows our Custom Blocks exported as JSON.
 
-Copy the Exported JSON and paste inside...
+Copy the Exported JSON and paste inside the marked location here...
 
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_blocks.js
+[generators/zig/zig_blocks.js](generators/zig/zig_blocks.js)
 
 So it looks like this...
 
 ```javascript
 'use strict';
-
 goog.module('Blockly.Zig.blocks');
-
 const Zig = goog.require('Blockly.Zig');
 
 /// Custom Blocks exported from Block Exporter based on zig_library.xml.
@@ -512,9 +510,7 @@ Zig['blocks'] =
 
 # Load Custom Block
 
-TODO
-
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/demos/code/code.js#L485-L504
+To load our Custom Block into Blockly, edit [demos/code/code.js](demos/code/code.js#L485-L504)
 
 ```javascript
   Code.loadBlocks('');
@@ -547,9 +543,7 @@ https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/demos/code/code.js#L48
 
 # Show Custom Block
 
-TODO
-
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/demos/code/index.html#L106-L115
+To show our Custom Block in the Blocks Toolbox, edit [demos/code/index.html](demos/code/index.html#L106-L115)
 
 ```xml
   <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
@@ -570,11 +564,26 @@ https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/demos/code/index.html#
 
 [(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/commit/996f37c8971e8b117ea749830eda552eb1885c97)
 
+This creates a Toolbox Category named "Sensors" with our Custom Blocks inside.
+
 # Code Generator for Custom Block
 
-TODO
+Remember that our BME280 Sensor Block...
 
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_functions.js#L59-L82
+![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block1.jpg)
+
+Will generate this Zig expression...
+
+```zig
+// Read the Temperature from BME280 Sensor
+try sen.readSensor(  // Read BME280 Sensor
+  c.struct_sensor_baro,       // Sensor Data Struct
+  "temperature",              // Sensor Data Field
+  "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+)
+```
+
+This is how we implement the Code Generator for our Custom Block: [generators/zig/zig_functions.js](generators/zig/zig_functions.js#L59-L82)
 
 ```javascript
 // Read BME280 Sensor
@@ -601,6 +610,21 @@ Zig['bme280'] = function(block) {
   ]).join('\n');
   return [code, Blockly.Zig.ORDER_UNARY_POSTFIX];
 };
+```
+
+# Build Custom Block
+
+TODO
+
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/all.js#L27-L32
+
+```javascript
+// Zig Custom Blocks and Code Generators
+goog.require('Blockly.Zig.blocks');
+goog.require('Blockly.Zig.functions');
+
+// Compose Message Block
+goog.require('Blockly.Zig.composeMessage');
 ```
 
 # Test Custom Block
