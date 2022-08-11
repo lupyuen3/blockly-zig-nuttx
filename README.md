@@ -420,7 +420,7 @@ Let's create a Custom Block in Blockly for our Bosch BME280 Sensor...
 
 ![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block1.jpg)
 
-The Blocks above will generate this code...
+The Blocks above will generate this Zig code to read the Temperature from the BME280 Sensor...
 
 ```zig
 // Read the Temperature from BME280 Sensor
@@ -433,6 +433,8 @@ const temperature = try sen.readSensor(  // Read BME280 Sensor
 // Print the Temperature
 debug("temperature={}", .{ temperature });
 ```
+
+[(`readSensor` is explained here)](https://github.com/lupyuen/visual-zig-nuttx#zig-generics)
 
 # Create Custom Block
 
