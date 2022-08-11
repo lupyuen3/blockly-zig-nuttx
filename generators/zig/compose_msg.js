@@ -210,7 +210,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
 };
 
 /**
- * Performs final setup of a text_join block.
+ * Performs final setup of a Compose Message block.
  * @this {Blockly.Block}
  */
 blocks.COMPOSE_MSG_EXTENSION = function() {
