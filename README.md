@@ -437,7 +437,13 @@ TODO
 
 ![Create Custom Block](https://lupyuen.github.io/images/visual-block3.jpg)
 
-Download Block Library XML
+https://blockly-demo.appspot.com/static/demos/blockfactory/index.html
+
+Block Factory Tab
+
+Download Block Library
+
+Save the downloaded XML
 
 # Export Custom Block
 
@@ -445,13 +451,146 @@ TODO
 
 ![Export Custom Block](https://lupyuen.github.io/images/visual-block4.jpg)
 
+Block Exporter Tab
+
+Select all Custom Blocks
+
+Block Definitions: JSON Format
+
+Copy from "Export Preview"
+
+Into ???
+
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_blocks.js
+
+```javascript
+'use strict';
+
+goog.module('Blockly.Zig.blocks');
+
+const Zig = goog.require('Blockly.Zig');
+
+/// Custom Blocks exported from Block Exporter based on zig_library.xml.
+/// Exposed as Blockly.Zig.blocks. Read by demos/code/code.js.
+/// See zig_functions.js for Code Generator Functions.
+Zig['blocks'] =
+// Begin Paste from Block Exporter
+[{
+  "type": "every",
+  "message0": "every %1 seconds %2 %3",
+  ...
+},
+{
+  "type": "field",
+  "message0": "field %1 %2 value %3",
+  ...
+},
+{
+  "type": "bme280",
+  "message0": "BME280 Sensor %1 read %2 %3 from %4",
+  ...
+},
+{
+  "type": "transmit_msg",
+  "message0": "transmit message %1 to %2",
+  ...
+}]
+// End Paste from Block Exporter
+;
+```
+
 # Load Custom Block
 
 TODO
 
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/demos/code/code.js#L485-L504
+
+```javascript
+  Code.loadBlocks('');
+
+  //// TODO: Added code here
+  //  Load the Zig Custom Blocks.
+  var blocks = Blockly.Zig.blocks;  // From generators/zig/zig_blocks.js
+  // For each Block...
+  blocks.forEach(block => {
+    // Register the Block with Blockly.
+    Blockly.Blocks[block.type] = {
+      init: function() {
+        this.jsonInit(block);
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        var thisBlock = this;
+        // this.setTooltip(function() {
+        //   return 'Add a number to variable "%1".'.replace('%1',
+        //       thisBlock.getFieldValue('VAR'));
+        // });
+      }
+    };    
+  });
+  //// End of added code
+
+  if ('BlocklyStorage' in window) {
+  ...
+```
+
+[(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/commit/5204bbcad281ffd92f79cf6407a71cc3a96ab556)
+
+# Show Custom Block
+
+TODO
+
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/demos/code/index.html#L106-L115
+
+```xml
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+
+    <!--  Begin: Sensors Category -->
+    <category name="Sensors" colour="160">
+      <block type="bme280"></block>
+      <block type="every"></block>
+      <block type="compose_msg"></block>
+      <block type="field"></block>
+      <block type="transmit_msg"></block>
+    </category>
+    <!--  End: Sensors Category -->
+
+    <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
+    ...
+```
+
+[(See the changes)](https://github.com/lupyuen3/blockly-zig-nuttx/commit/996f37c8971e8b117ea749830eda552eb1885c97)
+
 # Code Generator for Custom Block
 
 TODO
+
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_functions.js#L59-L82
+
+```javascript
+// Read BME280 Sensor
+Zig['bme280'] = function(block) {
+  // Get the Sensor Data Field: temperature / pressure / humidity
+  const field = block.getFieldValue('FIELD');
+
+  // Get the Sensor Device Path, like "/dev/sensor/sensor_baro0"
+  // TODO: Validate that path contains "sensor_humi" for humidity
+  const path = block.getFieldValue('PATH');
+
+  // Struct name is "sensor_humi" for humidity, else "sensor_baro"
+  const struct = (field == 'humidity')
+    ? 'struct_sensor_humi'
+    : 'struct_sensor_baro';
+
+  // Compose the code
+  const code = alignComments([
+    `try sen.readSensor(  // Read BME280 Sensor`,
+    Blockly.Zig.INDENT + `c.${struct},  // Sensor Data Struct`,
+    Blockly.Zig.INDENT + `"${field}",  // Sensor Data Field`,
+    Blockly.Zig.INDENT + `"${path}"  // Path of Sensor Device`,
+    `)`,
+  ]).join('\n');
+  return [code, Blockly.Zig.ORDER_UNARY_POSTFIX];
+};
+```
 
 # Test Custom Block
 
