@@ -689,7 +689,7 @@ temperature=31.32
 
 (Tested with NuttX and BME280 on BL602)
 
-# Custom Extension / Mutator
+# Custom Extension
 
 The Compose Message Block needs a [Custom Extension / Mutator](https://developers.google.com/blockly/guides/create-custom-blocks/extensions) in Blockly because it has a variable number of slots (for the Message Fields)...
 
