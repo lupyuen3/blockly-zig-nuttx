@@ -450,7 +450,7 @@ This creates a Custom Block that has the following fields...
 
 -   Dropdown Field `FIELD`: Select "temperature", "pressure" or "humidity"
 
--   Text Input Field `PATH`: For the NuttX Path of the Sensor Device, like "/dev/sensor/sensor_baro0"
+-   Text Input Field `PATH`: For the NuttX Path of our BME280 Sensor, defaults to "/dev/sensor/sensor_baro0"
 
 Click "Update BME280" to save the Custom Control.
 
