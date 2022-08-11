@@ -681,7 +681,7 @@ TODO
 
 ![Complex Sensor App](https://lupyuen.github.io/images/visual-block6.jpg)
 
-Emit this code...
+Emits this Zig program...
 
 ```zig
 /// Main Function
@@ -695,18 +695,21 @@ pub fn main() !void {
       "/dev/sensor/sensor_baro0"  // Path of Sensor Device
     );
     debug("temperature={}", .{ temperature });
+
     const pressure = try sen.readSensor(  // Read BME280 Sensor
       c.struct_sensor_baro,       // Sensor Data Struct
       "pressure",                 // Sensor Data Field
       "/dev/sensor/sensor_baro0"  // Path of Sensor Device
     );
     debug("pressure={}", .{ pressure });
+
     const humidity = try sen.readSensor(  // Read BME280 Sensor
       c.struct_sensor_humi,       // Sensor Data Struct
       "humidity",                 // Sensor Data Field
       "/dev/sensor/sensor_humi0"  // Path of Sensor Device
     );
     debug("humidity={}", .{ humidity });
+
     const msg = try composeCbor(.{  // Compose CBOR Message
       "t", temperature,
       "p", pressure,
@@ -722,7 +725,7 @@ pub fn main() !void {
 }
 ```
 
-Which runs OK with NuttX on BL602 and BME280...
+Which runs OK with NuttX and BME280 on BL602...
 
 ```text
 NuttShell (NSH) NuttX-10.3.0
