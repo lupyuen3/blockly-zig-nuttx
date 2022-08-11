@@ -462,7 +462,7 @@ Earlier we have created our BME280 Sensor Block in Blockly Developer Tools. Now 
 
 Click the "Block Exporter" Tab
 
-Under "Block Selector", select all Custom Blocks.
+Under "Block Selector", select all Blocks.
 
 For "Export Settings" > "Block Definitions", select "JSON Format"
 
@@ -508,9 +508,13 @@ Zig['blocks'] =
 ;
 ```
 
+This code goes into the JavaScript Module `Blockly.Zig.blocks`. We'll build this module in a while.
+
 # Load Custom Block
 
-To load our Custom Block into Blockly, edit [demos/code/code.js](demos/code/code.js#L485-L504)
+Previously we have exported our Custom Blocks to the JavaScript Module `Blockly.Zig.blocks`.
+
+To load our Custom Blocks into Blockly, insert this code into [demos/code/code.js](demos/code/code.js#L485-L504)...
 
 ```javascript
   Code.loadBlocks('');
@@ -543,7 +547,7 @@ To load our Custom Block into Blockly, edit [demos/code/code.js](demos/code/code
 
 # Show Custom Block
 
-To show our Custom Block in the Blocks Toolbox, edit [demos/code/index.html](demos/code/index.html#L106-L115)
+To show our Custom Block in the Blocks Toolbox, edit [demos/code/index.html](demos/code/index.html#L106-L115) and insert this...
 
 ```xml
   <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
@@ -586,6 +590,10 @@ try sen.readSensor(  // Read BME280 Sensor
 This is how we implement the Code Generator for our Custom Block: [generators/zig/zig_functions.js](generators/zig/zig_functions.js#L59-L82)
 
 ```javascript
+goog.module('Blockly.Zig.functions');
+
+const Zig = goog.require('Blockly.Zig');
+
 // Read BME280 Sensor
 Zig['bme280'] = function(block) {
   // Get the Sensor Data Field: temperature / pressure / humidity
@@ -612,11 +620,13 @@ Zig['bme280'] = function(block) {
 };
 ```
 
+This code goes into the JavaScript Module `Blockly.Zig.functions`. We'll build this module in the next section...
+
 # Build Custom Block
 
-TODO
+Earlier we have exported our Custom Blocks into the JavaScript Module `Blockly.Zig.blocks`. And the Code Generator for our Custom Blocks is defined in module `Blockly.Zig.functions`.
 
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/all.js#L27-L32
+Let's add them to the Blockly Build: [generators/zig/all.js](generators/zig/all.js#L27-L32)
 
 ```javascript
 // Zig Custom Blocks and Code Generators
@@ -627,9 +637,88 @@ goog.require('Blockly.Zig.functions');
 goog.require('Blockly.Zig.composeMessage');
 ```
 
+`Blockly.Zig.composeMessage` is a Custom Extension / Mutator for Blockly that renders our "Compose Message" Block. We'll cover this in a while.
+
+Rebuild Blockly according to the instructions posted above.
+
 # Test Custom Block
 
 TODO
+
+Browse to `blockly-zig-nuttx/demos/code` with a Local Web Server. We should see this...
+
+[lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
+TODO
+
+![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block2.jpg)
+
+TODO
+
+```text
+NuttShell (NSH) NuttX-10.3.0
+nsh> sensortest visual
+Zig Sensor Test
+Start main
+
+temperature=31.32
+pressure=1004.67
+humidity=67.79
+composeCbor
+transmitLorawan
+
+temperature=31.40
+pressure=1004.60
+humidity=67.66
+composeCbor
+transmitLorawan
+
+temperature=31.46
+pressure=1004.67
+humidity=67.59
+composeCbor
+transmitLorawan
+
+temperature=31.52
+pressure=1004.67
+humidity=67.44
+composeCbor
+transmitLorawan
+
+temperature=31.57
+pressure=1004.66
+humidity=67.34
+composeCbor
+transmitLorawan
+
+temperature=31.59
+pressure=1004.68
+humidity=67.22
+composeCbor
+transmitLorawan
+
+temperature=31.63
+pressure=1004.70
+humidity=67.18
+composeCbor
+transmitLorawan
+
+temperature=31.65
+pressure=1004.68
+humidity=66.90
+composeCbor
+transmitLorawan
+
+temperature=31.69
+pressure=1004.70
+humidity=66.87
+composeCbor
+transmitLorawan
+```
+
+# Custom Extension / Mutator
+
+TODO: https://developers.google.com/blockly/guides/create-custom-blocks/extensions
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 
