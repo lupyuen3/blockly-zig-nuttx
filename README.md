@@ -446,11 +446,17 @@ Drag-and-drop from "Input", "Field" and "Type" to assemble our BME280 Sensor Blo
 
 ![Create Custom Block](https://lupyuen.github.io/images/visual-block3.jpg)
 
-Click "Update BME280"
+This creates a Custom Block that has the following fields...
 
-To create another Block, click "Block Library"
+-   Dropdown Field `FIELD`: Select "temperature", "pressure" or "humidity"
 
-When we're done, click "Download Block Library"
+-   Text Input Field `PATH`: For the NuttX Path of the Sensor Device, like "/dev/sensor/sensor_baro0"
+
+Click "Update BME280" to save the Custom Control.
+
+To create another Block, click "Block Library".
+
+When we're done, click "Download Block Library".
 
 Save the downloaded XML so that we can "Import Block Library" and edit our Block in future...
 
