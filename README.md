@@ -628,6 +628,12 @@ Zig['bme280'] = function(block) {
 };
 ```
 
+The code above refers to the following fields that we have defined in our BME280 Sensor Block...
+
+-   Dropdown Field `FIELD`: Select "temperature", "pressure" or "humidity"
+
+-   Text Input Field `PATH`: For the NuttX Path of our BME280 Sensor, defaults to "/dev/sensor/sensor_baro0"
+
 This code goes into the JavaScript Module `Blockly.Zig.functions`. We'll build this module in the next section...
 
 # Build Custom Block
@@ -707,28 +713,38 @@ https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c9
 
 ![Compose Message](https://lupyuen.github.io/images/visual-block7a.jpg)
 
-TODO
-
-![Compose Message](https://lupyuen.github.io/images/visual-block7b.jpg)
-
-TODO
-
-![Transmit Message](https://lupyuen.github.io/images/visual-block7c.jpg)
-
 # Code Generator for Custom Extension
 
 TODO
 
-[generators/zig/zig_functions.js](generators/zig/zig_functions.js#L16-L32)
+This Custom Extension...
+
+![Compose Message](https://lupyuen.github.io/images/visual-block7b.jpg)
+
+Will generate this Zig code...
+
+```zig
+const msg = try composeCbor(.{  // Compose CBOR Message
+  "t", temperature,
+  "p", pressure,
+  "h", humidity,
+});
+```
+
+Here's the implementation: [generators/zig/zig_functions.js](generators/zig/zig_functions.js#L16-L32)
 
 ```zig
 // Generate CBOR Message
 Zig['compose_msg'] = function(block) {
+
+  // Convert each Message Field to Zig Code
   var elements = new Array(block.itemCount_);
   for (var i = 0; i < block.itemCount_; i++) {
     elements[i] = Blockly.Zig.valueToCode(block, 'ADD' + i,
       Blockly.Zig.ORDER_NONE) || '\'\'';
   }
+
+  // Combine the Message Fields into a CBOR Message
   const code = [
     'try composeCbor(.{  // Compose CBOR Message',
     //  Insert the indented elements.
@@ -871,6 +887,12 @@ humidity=66.87
 composeCbor
 transmitLorawan
 ```
+
+# Transmit Message
+
+TODO
+
+![Transmit Message](https://lupyuen.github.io/images/visual-block7c.jpg)
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 

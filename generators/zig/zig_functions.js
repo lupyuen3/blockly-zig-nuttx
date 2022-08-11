@@ -15,11 +15,15 @@ const Zig = goog.require('Blockly.Zig');
 
 // Generate CBOR Message
 Zig['compose_msg'] = function(block) {
+
+  // Convert each Message Field to Zig Code
   var elements = new Array(block.itemCount_);
   for (var i = 0; i < block.itemCount_; i++) {
     elements[i] = Blockly.Zig.valueToCode(block, 'ADD' + i,
       Blockly.Zig.ORDER_NONE) || '\'\'';
   }
+
+  // Combine the Message Fields into a CBOR Message
   const code = [
     'try composeCbor(.{  // Compose CBOR Message',
     //  Insert the indented elements.
