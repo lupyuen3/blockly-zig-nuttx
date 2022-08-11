@@ -35,7 +35,7 @@ Zig['compose_msg'] = function(block) {
 Zig['field'] = function(block) {
   const name = block.getFieldValue('NAME');
   const value = Blockly.Zig.valueToCode(block, 'name', Blockly.JavaScript.ORDER_ATOMIC);
-  const code = `.{ "${name}", ${value} },`;
+  const code = `"${name}", ${value},`;
   return [code, Blockly.Zig.ORDER_NONE];
 };
 
@@ -49,7 +49,7 @@ Zig['every'] = function(block) {
     `while (true) {`,
     stmts,
     Blockly.Zig.INDENT + `// Wait ${duration} seconds`,
-    Blockly.Zig.INDENT + `c.sleep(${duration});`,
+    Blockly.Zig.INDENT + `_ = c.sleep(${duration});`,
     `}`,
     ``,
   ].join('\n');

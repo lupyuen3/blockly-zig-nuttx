@@ -101,7 +101,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
   /**
    * Create XML to represent number of text inputs.
    * @return {!Element} XML storage element.
-   * @this Blockly.Block
+   * @this {Blockly.Block}
    */
   mutationToDom: function() {
     var container = document.createElement('mutation');
@@ -111,7 +111,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
   /**
    * Parse XML to restore the text inputs.
    * @param {!Element} xmlElement XML storage element.
-   * @this Blockly.Block
+   * @this {Blockly.Block}
    */
   domToMutation: function(xmlElement) {
     this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
@@ -121,7 +121,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
    * Populate the mutator's dialog with this block's components.
    * @param {!Blockly.Workspace} workspace Mutator's workspace.
    * @return {!Blockly.Block} Root block in mutator.
-   * @this Blockly.Block
+   * @this {Blockly.Block}
    */
   decompose: function(workspace) {
     var containerBlock = workspace.newBlock('compose_msg_container');
@@ -138,7 +138,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
   /**
    * Reconfigure this block based on the mutator dialog's components.
    * @param {!Blockly.Block} containerBlock Root block in mutator.
-   * @this Blockly.Block
+   * @this {Blockly.Block}
    */
   compose: function(containerBlock) {
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
@@ -166,7 +166,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
   /**
    * Store pointers to any connected child blocks.
    * @param {!Blockly.Block} containerBlock Root block in mutator.
-   * @this Blockly.Block
+   * @this {Blockly.Block}
    */
   saveConnections: function(containerBlock) {
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
@@ -182,7 +182,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
   /**
    * Modify this block to have the correct number of inputs.
    * @private
-   * @this Blockly.Block
+   * @this {Blockly.Block}
    */
   updateShape_: function() {
     if (this.itemCount_ && this.getInput('EMPTY')) {
@@ -211,7 +211,7 @@ blocks.COMPOSE_MSG_MUTATOR_MIXIN = {
 
 /**
  * Performs final setup of a text_join block.
- * @this Blockly.Block
+ * @this {Blockly.Block}
  */
 blocks.COMPOSE_MSG_EXTENSION = function() {
   // Add the quote mixin for the itemCount_ = 0 case.
