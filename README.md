@@ -697,17 +697,17 @@ The Compose Message Block needs a [Custom Extension](https://developers.google.c
 
 This is how we define the Blocks in our Custom Extension...
 
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L59-L92
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/b6dbd66283ef148813376802050173e1d791c794/generators/zig/compose_msg.js#L59-L92
 
 Our Custom Extension needs a [Mutator](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#mutators) that will save the attached Message Fields.
 
 Here's the [Mixin](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#mixins) that implements the Mutator for our Custom Extension...
 
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L94-L210
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/b6dbd66283ef148813376802050173e1d791c794/generators/zig/compose_msg.js#L94-L210
 
 And here's our [Custom Extension](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#extensions) that bundles the above Blocks, Mutator and Mixin...
 
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/66c61a1a03200a67a24ea0cb5f2c99a27119a968/generators/zig/compose_msg.js#L212-L228
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/b6dbd66283ef148813376802050173e1d791c794/generators/zig/compose_msg.js#L212-L228
 
 [(We copied our Custom Extension from the Text Join Block)](https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/blocks/text.js#L712-L860)
 
