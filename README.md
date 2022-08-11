@@ -470,7 +470,7 @@ For "Export Settings" > "Block Definitions", select "JSON Format"
 
 "Export Preview" shows our Custom Blocks exported as JSON.
 
-Copy the Exported JSON and paste inside the marked location here...
+Copy the Exported JSON and paste into the marked location here...
 
 [generators/zig/zig_blocks.js](generators/zig/zig_blocks.js)
 
@@ -660,6 +660,16 @@ TODO
 ![BME280 Sensor Block](https://lupyuen.github.io/images/visual-block2.jpg)
 
 TODO
+
+Which runs OK with NuttX and BME280 on BL602...
+
+```text
+NuttShell (NSH) NuttX-10.3.0
+nsh> sensortest visual
+Zig Sensor Test
+Start main
+temperature=31.32
+```
 
 # Custom Extension / Mutator
 
