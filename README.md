@@ -456,21 +456,23 @@ https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_lib
 
 # Export Custom Block
 
-TODO
+Earlier we have created our BME280 Sensor Block in Blockly Developer Tools. Now we export the Block...
 
 ![Export Custom Block](https://lupyuen.github.io/images/visual-block4.jpg)
 
-Block Exporter Tab
+Click the "Block Exporter" Tab
 
-Select all Custom Blocks
+Under "Block Selector", select all Custom Blocks.
 
-Block Definitions: JSON Format
+For "Export Settings" > "Block Definitions", select "JSON Format"
 
-Copy from "Export Preview"
+"Export Preview" shows our Custom Blocks exported as JSON.
 
-Into ???
+Copy the Exported JSON and paste inside...
 
 https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_blocks.js
+
+So it looks like this...
 
 ```javascript
 'use strict';
