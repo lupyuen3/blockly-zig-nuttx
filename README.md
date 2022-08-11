@@ -436,17 +436,23 @@ debug("temperature={}", .{ temperature });
 
 # Create Custom Block
 
-TODO
-
-![Create Custom Block](https://lupyuen.github.io/images/visual-block3.jpg)
+To create our Custom Block, browse to the Blockly Developer Tools...
 
 https://blockly-demo.appspot.com/static/demos/blockfactory/index.html
 
-Block Factory Tab
+Assemble our BME280 Sensor Block like so...
 
-Download Block Library
+![Create Custom Block](https://lupyuen.github.io/images/visual-block3.jpg)
 
-Save the downloaded XML
+Click "Update BME280"
+
+To create another Block, click "Block Library"
+
+When we're done, click "Download Block Library"
+
+Save the downloaded XML so that we can "Import Block Library" and edit our Block in future...
+
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/master/generators/zig/zig_library.xml
 
 # Export Custom Block
 
