@@ -995,10 +995,17 @@ fn transmitLorawan(msg: CborMessage) !void {
 const c = struct {
     const struct_sensor_baro = struct{};
     const struct_sensor_humi = struct{};
-    fn sleep(i: c_int) void { _ = i; }
+    fn sleep(seconds: c_uint) c_int {
+        std.time.sleep(@as(u64, seconds) * std.time.ns_per_s);
+        return 0;
+    }
 };
 
-fn readSensor(comptime SensorType: type, comptime field_name: []const u8, device_path: []const u8) !f32 { _ = SensorType; _ = field_name; _ = device_path; return 23.45; }
+const sen = struct {
+    fn readSensor(comptime SensorType: type, comptime field_name: []const u8, device_path: []const u8) !f32
+        { _ = SensorType; _ = field_name; _ = device_path; return 23.45; }
+};
+
 fn floatToFixed(f: f32) f32 { return f; }
 ```
 
