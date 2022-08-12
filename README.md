@@ -916,7 +916,7 @@ transmitLorawan
 
 # Test Stubs
 
-TODO: To test the Zig program above on Linux / macOS / Windows (instead of NuttX)
+To test the Zig program above on Linux / macOS / Windows (instead of NuttX), add the stubs below to simulate a NuttX Sensor...
 
 ```zig
 /// Import Standard Library
