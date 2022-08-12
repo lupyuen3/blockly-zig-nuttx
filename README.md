@@ -691,7 +691,7 @@ temperature=31.32
 
 # Custom Extension
 
-The Compose Message Block needs a [Custom Extension](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#extensions) in Blockly because it has a variable number of slots (for the Message Fields)...
+Our Compose Message Block needs a [Custom Extension](https://developers.google.com/blockly/guides/create-custom-blocks/extensions#extensions) in Blockly because it has a variable number of slots (for the Message Fields)...
 
 ![Compose Message](https://lupyuen.github.io/images/visual-block7a.jpg)
 
@@ -781,6 +781,8 @@ Zig['field'] = function(block) {
 
 To test our Custom Extension for Compose Message, let's build a Complex Sensor App that will read Temperature, Pressure and Humidity from BME280 Sensor, and transmit the values to LoRaWAN...
 
+[lupyuen3.github.io/blockly-zig-nuttx/demos/code](https://lupyuen3.github.io/blockly-zig-nuttx/demos/code/)
+
 ![Complex Sensor App](https://lupyuen.github.io/images/visual-block6.jpg)
 
 The Blocks above will emit this Zig program...
@@ -827,7 +829,11 @@ pub fn main() !void {
 }
 ```
 
-Which runs OK with NuttX and BME280 on BL602...
+Copy the contents of the Main Function and paste here...
+
+[visual-zig-nuttx/blob/main/visual.zig](https://github.com/lupyuen/visual-zig-nuttx/blob/main/visual.zig)
+
+The generated Zig code should correctly read the Temperature, Pressure and Humidity from BME280 Sensor, and transmit the values to LoRaWAN...
 
 ```text
 NuttShell (NSH) NuttX-10.3.0
@@ -889,6 +895,8 @@ humidity=66.87
 composeCbor
 transmitLorawan
 ```
+
+(Tested with NuttX and BME280 on BL602)
 
 # Transmit Message
 
