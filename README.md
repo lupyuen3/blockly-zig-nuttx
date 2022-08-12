@@ -841,58 +841,112 @@ nsh> sensortest visual
 Zig Sensor Test
 Start main
 
-temperature=31.32
-pressure=1004.67
-humidity=67.79
+temperature=29.90
+pressure=1006.90
+humidity=76.83
 composeCbor
+  t: 29.90
+  p: 1006.90
+  h: 76.83
 transmitLorawan
 
-temperature=31.40
-pressure=1004.60
-humidity=67.66
+temperature=29.94
+pressure=1006.94
+humidity=76.85
 composeCbor
+  t: 29.94
+  p: 1006.94
+  h: 76.85
 transmitLorawan
 
-temperature=31.46
-pressure=1004.67
-humidity=67.59
+temperature=29.97
+pressure=1006.94
+humidity=76.68
 composeCbor
+  t: 29.97
+  p: 1006.94
+  h: 76.68
 transmitLorawan
 
-temperature=31.52
-pressure=1004.67
-humidity=67.44
+temperature=30.01
+pressure=1006.95
+humidity=76.57
 composeCbor
+  t: 30.01
+  p: 1006.95
+  h: 76.57
 transmitLorawan
 
-temperature=31.57
-pressure=1004.66
-humidity=67.34
+temperature=30.04
+pressure=1006.96
+humidity=76.54
 composeCbor
+  t: 30.04
+  p: 1006.96
+  h: 76.54
 transmitLorawan
 
-temperature=31.59
-pressure=1004.68
-humidity=67.22
+temperature=30.09
+pressure=1006.95
+humidity=76.37
 composeCbor
+  t: 30.09
+  p: 1006.95
+  h: 76.37
 transmitLorawan
 
-temperature=31.63
-pressure=1004.70
-humidity=67.18
+temperature=30.12
+pressure=1006.97
+humidity=76.25
 composeCbor
+  t: 30.12
+  p: 1006.97
+  h: 76.25
 transmitLorawan
 
-temperature=31.65
-pressure=1004.68
-humidity=66.90
+temperature=30.17
+pressure=1006.91
+humidity=76.05
 composeCbor
+  t: 30.17
+  p: 1006.91
+  h: 76.05
 transmitLorawan
 
-temperature=31.69
-pressure=1004.70
-humidity=66.87
+temperature=30.22
+pressure=1006.95
+humidity=75.97
 composeCbor
+  t: 30.22
+  p: 1006.95
+  h: 75.97
+transmitLorawan
+
+temperature=30.30
+pressure=1006.97
+humidity=75.79
+composeCbor
+  t: 30.30
+  p: 1006.97
+  h: 75.79
+transmitLorawan
+
+temperature=30.29
+pressure=1006.95
+humidity=75.53
+composeCbor
+  t: 30.29
+  p: 1006.95
+  h: 75.53
+transmitLorawan
+
+temperature=30.29
+pressure=1006.94
+humidity=75.62
+composeCbor
+  t: 30.29
+  p: 1006.94
+  h: 75.62
 transmitLorawan
 ```
 
