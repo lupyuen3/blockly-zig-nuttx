@@ -729,6 +729,8 @@ const msg = try composeCbor(.{  // Compose CBOR Message
 });
 ```
 
+[(`composeCbor` is explained here)](https://github.com/lupyuen/visual-zig-nuttx#cbor-encoding)
+
 Here's the implementation of our Code Generator: [generators/zig/zig_functions.js](generators/zig/zig_functions.js#L16-L32)
 
 ```zig
@@ -828,6 +830,8 @@ pub fn main() !void {
   }
 }
 ```
+
+[(`composeCbor` is explained here)](https://github.com/lupyuen/visual-zig-nuttx#cbor-encoding)
 
 Copy the contents of the Main Function and paste here...
 
