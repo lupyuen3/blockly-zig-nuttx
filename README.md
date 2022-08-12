@@ -779,11 +779,11 @@ Zig['field'] = function(block) {
 
 # Test Custom Extension
 
-TODO
+To test our Custom Extension for Compose Message, let's build a Complex Sensor App that will read Temperature, Pressure and Humidity from BME280 Sensor, and transmit the values to LoRaWAN...
 
 ![Complex Sensor App](https://lupyuen.github.io/images/visual-block6.jpg)
 
-Emits this Zig program...
+The Blocks above will emit this Zig program...
 
 ```zig
 /// Main Function
@@ -895,6 +895,17 @@ transmitLorawan
 TODO
 
 ![Transmit Message](https://lupyuen.github.io/images/visual-block7c.jpg)
+
+TODO
+
+```zig
+// Transmit message to LoRaWAN
+try transmitLorawan(msg);
+```
+
+TODO
+
+https://github.com/lupyuen3/blockly-zig-nuttx/blob/d0581c330f2d4d0d7f23bbd9d0fb64ee6efb70f0/generators/zig/zig_functions.js#L88-L99
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 
