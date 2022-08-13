@@ -4,6 +4,8 @@
 
 Read the articles...
 
+-   ["Visual Programming with Zig and NuttX Sensors"](https://lupyuen.github.io/articles/visual)
+
 -   ["Zig Visual Programming with Blockly"](https://lupyuen.github.io/articles/blockly)
 
 -   ["Read NuttX Sensor Data with Zig"](https://lupyuen.github.io/articles/sensor)
