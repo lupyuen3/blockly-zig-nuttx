@@ -1,4 +1,4 @@
-![Visual Programming for Zig with NuttX Sensors](https://lupyuen.github.io/images/sensor-visual.jpg)
+![Visual Programming with Zig and NuttX Sensors on Blockly](https://lupyuen.github.io/images/visual-title.jpg)
 
 # Visual Programming for Zig with NuttX Sensors
 
