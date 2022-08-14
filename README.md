@@ -1011,6 +1011,8 @@ const sen = struct {
 fn floatToFixed(f: f32) f32 { return f; }
 ```
 
+[(`composeCbor` is explained here)](https://github.com/lupyuen/visual-zig-nuttx#cbor-encoding)
+
 # Transmit Message
 
 TODO
