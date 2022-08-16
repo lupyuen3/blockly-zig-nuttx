@@ -837,7 +837,7 @@ pub fn main() !void {
 
 Copy the contents of the Main Function and paste here...
 
-[visual-zig-nuttx/blob/main/visual.zig](https://github.com/lupyuen/visual-zig-nuttx/blob/main/visual.zig)
+[visual-zig-nuttx/visual.zig](https://github.com/lupyuen/visual-zig-nuttx/blob/main/visual.zig)
 
 The generated Zig code should correctly read the Temperature, Pressure and Humidity from BME280 Sensor, and transmit the values to LoRaWAN...
 
