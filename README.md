@@ -1013,22 +1013,137 @@ fn floatToFixed(f: f32) f32 { return f; }
 
 [(`composeCbor` is explained here)](https://github.com/lupyuen/visual-zig-nuttx#cbor-encoding)
 
-# Transmit Message
+# Build Log
 
-TODO
+```text
+→ npm install
 
-![Transmit Message](https://lupyuen.github.io/images/visual-block7c.jpg)
+> fsevents@1.2.13 install blockly-zig-nuttx/node_modules/glob-watcher/node_modules/fsevents
+> node install.js
 
-TODO
+make: Entering directory 'blockly-zig-nuttx/node_modules/glob-watcher/node_modules/fsevents/build'
+  SOLINK_MODULE(target) Release/.node
+  CXX(target) Release/obj.target/fse/fsevents.o
+  SOLINK_MODULE(target) Release/fse.node
+make: Leaving directory 'blockly-zig-nuttx/node_modules/glob-watcher/node_modules/fsevents/build'
 
-```zig
-// Transmit message to LoRaWAN
-try transmitLorawan(msg);
+> @hyperjump/json-pointer@0.9.2 postinstall blockly-zig-nuttx/node_modules/@hyperjump/json-pointer
+> rm -rf dist
+
+
+> @hyperjump/pact@0.2.1 postinstall blockly-zig-nuttx/node_modules/@hyperjump/pact
+> rm -rf dist
+
+
+> @hyperjump/json-schema-core@0.23.6 postinstall blockly-zig-nuttx/node_modules/@hyperjump/json-schema-core
+> rm -rf dist
+
+
+> @hyperjump/json-schema@0.18.4 postinstall blockly-zig-nuttx/node_modules/@hyperjump/json-schema
+> rm -rf dist
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: google-closure-compiler-windows@20220301.0.0 (node_modules/google-closure-compiler-windows):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for google-closure-compiler-windows@20220301.0.0: wanted {"os":"win32","arch":"x64"} (current: {"os":"darwin","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: google-closure-compiler-linux@20220301.0.0 (node_modules/google-closure-compiler-linux):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for google-closure-compiler-linux@20220301.0.0: wanted {"os":"linux","arch":"x64,x86"} (current: {"os":"darwin","arch":"x64"})
+
+added 1026 packages from 1074 contributors and audited 1031 packages in 67.757s
+
+69 packages are looking for funding
+  run `npm fund` for details
+
+found 12 vulnerabilities (6 moderate, 5 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+→ npm run build
+
+> blockly@8.0.4 build blockly-zig-nuttx
+> gulp build
+
+[12:30:30] Using gulpfile ~/pinecone/blockly-zig-nuttx/gulpfile.js
+[12:30:30] Starting 'build'...
+[12:30:30] Starting 'buildLangfiles'...
+[12:30:30] Starting 'buildDeps'...
+[12:30:31] Finished 'buildLangfiles' after 1.1 s
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 39, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 40, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 75, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 91, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 92, 3: Bounded generic semantics are currently still in development
+[12:30:43] Finished 'buildDeps' after 13 s
+[12:30:43] Starting 'buildCompiled'...
+[12:30:58] Finished 'buildCompiled' after 15 s
+[12:30:58] Finished 'build' after 28 s
+
+→ npm run publish
+
+> blockly@8.0.4 publish blockly-zig-nuttx
+> gulp publish
+
+[12:31:09] Using gulpfile ~/pinecone/blockly-zig-nuttx/gulpfile.js
+[12:31:09] Starting 'publish'...
+[12:31:09] Starting 'cleanBuildDir'...
+[12:31:09] Finished 'cleanBuildDir' after 33 ms
+[12:31:09] Starting 'buildLangfiles'...
+[12:31:09] Starting 'buildDeps'...
+[12:31:10] Finished 'buildLangfiles' after 726 ms
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 39, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 40, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 75, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 91, 3: Bounded generic semantics are currently still in development
+WARNING in blockly-zig-nuttx/tests/mocha/test_helpers/common.js at 92, 3: Bounded generic semantics are currently still in development
+[12:31:23] Finished 'buildDeps' after 14 s
+[12:31:23] Starting 'buildCompiled'...
+[12:31:36] Finished 'buildCompiled' after 13 s
+[12:31:36] Starting 'checkinBuilt'...
+[12:31:36] Finished 'checkinBuilt' after 272 ms
+[12:31:36] Starting 'checkBuildDir'...
+[12:31:36] Finished 'checkBuildDir' after 456 μs
+[12:31:36] Starting 'cleanReleaseDir'...
+[12:31:36] Finished 'cleanReleaseDir' after 1.63 ms
+[12:31:36] Starting 'packageIndex'...
+[12:31:36] Starting 'packageSources'...
+[12:31:36] Starting 'packageCompressed'...
+[12:31:36] Starting 'packageBrowser'...
+[12:31:36] Starting 'packageNode'...
+[12:31:36] Starting 'packageCore'...
+[12:31:36] Starting 'packageNodeCore'...
+[12:31:36] Starting 'packageBlockly'...
+[12:31:36] Starting 'packageBlocks'...
+[12:31:36] Starting 'packageJavascript'...
+[12:31:36] Starting 'packagePython'...
+[12:31:36] Starting 'packageLua'...
+[12:31:36] Starting 'packageDart'...
+[12:31:36] Starting 'packagePHP'...
+[12:31:36] Starting 'packageLocales'...
+[12:31:36] Starting 'packageMedia'...
+[12:31:36] Starting 'packageUMDBundle'...
+[12:31:36] Starting 'packageJSON'...
+[12:31:36] Starting 'packageReadme'...
+[12:31:36] Starting 'packageDTS'...
+[12:31:36] Finished 'packageJSON' after 37 ms
+[12:31:36] Finished 'packageIndex' after 189 ms
+[12:31:36] Finished 'packageNode' after 189 ms
+[12:31:36] Finished 'packageBlockly' after 189 ms
+[12:31:36] Finished 'packageJavascript' after 190 ms
+[12:31:36] Finished 'packagePython' after 190 ms
+[12:31:36] Finished 'packageBlocks' after 191 ms
+[12:31:36] Finished 'packageNodeCore' after 191 ms
+[12:31:36] Finished 'packageDart' after 191 ms
+[12:31:36] Finished 'packageBrowser' after 195 ms
+[12:31:36] Finished 'packageLua' after 195 ms
+[12:31:36] Finished 'packageCore' after 196 ms
+[12:31:36] Finished 'packagePHP' after 196 ms
+[12:31:36] Finished 'packageReadme' after 196 ms
+[12:31:36] Finished 'packageUMDBundle' after 230 ms
+[12:31:36] Finished 'packageDTS' after 279 ms
+[12:31:36] Finished 'packageCompressed' after 321 ms
+[12:31:36] Finished 'packageMedia' after 325 ms
+[12:31:37] Finished 'packageLocales' after 691 ms
+[12:31:37] Finished 'packageSources' after 954 ms
+[12:31:37] Starting 'checkBranch'...
+You are on 'master'. Is this the correct branch? [y/n]: n
 ```
-
-TODO
-
-https://github.com/lupyuen3/blockly-zig-nuttx/blob/d0581c330f2d4d0d7f23bbd9d0fb64ee6efb70f0/generators/zig/zig_functions.js#L88-L99
 
 # Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
 
