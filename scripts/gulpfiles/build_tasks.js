@@ -130,6 +130,11 @@ const chunks = [
     name: 'dart',
     entry: 'generators/dart/all.js',
     reexport: 'Blockly.Dart',
+   },
+   {
+     name: 'zig',
+     entry: 'generators/zig/all.js',
+     reexport: 'Blockly.Zig',
   }
 ];
 

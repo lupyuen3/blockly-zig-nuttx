@@ -4,17 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google" value="notranslate">
-  <title>Blockly Demo:</title>
+  <title>Zig Blockly with NuttX</title>
+
+  <!--  Load Blockly Stylesheet and our override  -->
   <link rel="stylesheet" href="style.css">
   <script src="/storage.js"></script>
+
+  <!--  Load Blockly and Google Closure  -->
   <script src="../../blockly_compressed.js"></script>
+
+  <!--  Load Messages  -->
+  <script src="../../msg/messages.js"></script>
+
+  <!--  Load Blocks  -->
   <script src="../../blocks_compressed.js"></script>
+
+  <!--  Load Code Generators  -->
   <script src="../../javascript_compressed.js"></script>
   <script src="../../python_compressed.js"></script>
   <script src="../../php_compressed.js"></script>
   <script src="../../lua_compressed.js"></script>
   <script src="../../dart_compressed.js"></script>
+
+  <!--  Load Zig Code Generator  -->
+  <script src="../../zig_compressed.js"></script>
+
+  <!--  Run the Code Generation Demo  -->
   <script src="code.js"></script>
+
 </head>
 <body>
   <table width="100%" height="100%">
@@ -35,6 +52,8 @@
         <table width="100%">
           <tr id="tabRow" height="1em">
             <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_zig" class="taboff tab_collapse">Zig</td>
             <td class="tabmin tab_collapse">&nbsp;</td>
             <td id="tab_javascript" class="taboff tab_collapse">JavaScript</td>
             <td class="tabmin tab_collapse">&nbsp;</td>
@@ -74,6 +93,7 @@
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
+  <pre id="content_zig" class="content prettyprint lang-zig"></pre>
   <pre id="content_javascript" class="content prettyprint lang-js"></pre>
   <pre id="content_python" class="content prettyprint lang-py"></pre>
   <pre id="content_php" class="content prettyprint lang-php"></pre>
@@ -83,6 +103,17 @@
   <textarea id="content_json" class="content" wrap="off"></textarea>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+
+    <!--  Begin: Sensors Category -->
+    <category name="Sensors" colour="160">
+      <block type="bme280"></block>
+      <block type="every"></block>
+      <block type="compose_msg"></block>
+      <block type="field"></block>
+      <block type="transmit_msg"></block>
+    </category>
+    <!--  End: Sensors Category -->
+
     <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
