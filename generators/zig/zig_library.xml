@@ -147,7 +147,7 @@
                     <field name="TEXT">from</field>
                     <next>
                       <block type="field_input" id="c`7C0}m3]RC+TCqrItnO">
-                        <field name="TEXT">/dev/sensor/sensor_baro0</field>
+                        <field name="TEXT">/dev/uorb/sensor_baro0</field>
                         <field name="FIELDNAME">PATH</field>
                       </block>
                     </next>

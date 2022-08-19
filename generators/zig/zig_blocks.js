@@ -94,7 +94,7 @@ Zig['blocks'] =
     {
       "type": "field_input",
       "name": "PATH",
-      "text": "/dev/sensor/sensor_baro0"
+      "text": "/dev/uorb/sensor_baro0"
     }
   ],
   "output": "Number",

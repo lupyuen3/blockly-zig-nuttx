@@ -65,7 +65,7 @@ Zig['bme280'] = function(block) {
   // Get the Sensor Data Field: temperature / pressure / humidity
   const field = block.getFieldValue('FIELD');
 
-  // Get the Sensor Device Path, like "/dev/sensor/sensor_baro0"
+  // Get the Sensor Device Path, like "/dev/uorb/sensor_baro0"
   // TODO: Validate that path contains "sensor_humi" for humidity
   const path = block.getFieldValue('PATH');
 

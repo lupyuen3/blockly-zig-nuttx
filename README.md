@@ -429,7 +429,7 @@ The Blocks above will generate this Zig code to read the Temperature from the BM
 const temperature = try sen.readSensor(  // Read BME280 Sensor
   c.struct_sensor_baro,       // Sensor Data Struct
   "temperature",              // Sensor Data Field
-  "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+  "/dev/uorb/sensor_baro0"  // Path of Sensor Device
 );
 
 // Print the Temperature
@@ -452,7 +452,7 @@ This creates a Custom Block that has the following fields...
 
 -   Dropdown Field `FIELD`: Select "temperature", "pressure" or "humidity"
 
--   Text Input Field `PATH`: For the NuttX Path of our BME280 Sensor, defaults to "/dev/sensor/sensor_baro0"
+-   Text Input Field `PATH`: For the NuttX Path of our BME280 Sensor, defaults to "/dev/uorb/sensor_baro0"
 
 Click "Update BME280" to save the Custom Control.
 
@@ -593,7 +593,7 @@ Will generate this Zig expression...
 try sen.readSensor(  // Read BME280 Sensor
   c.struct_sensor_baro,       // Sensor Data Struct
   "temperature",              // Sensor Data Field
-  "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+  "/dev/uorb/sensor_baro0"  // Path of Sensor Device
 )
 ```
 
@@ -609,7 +609,7 @@ Zig['bme280'] = function(block) {
   // Get the Sensor Data Field: temperature / pressure / humidity
   const field = block.getFieldValue('FIELD');
 
-  // Get the Sensor Device Path, like "/dev/sensor/sensor_baro0"
+  // Get the Sensor Device Path, like "/dev/uorb/sensor_baro0"
   // TODO: Validate that path contains "sensor_humi" for humidity
   const path = block.getFieldValue('PATH');
 
@@ -634,7 +634,7 @@ The code above refers to the following fields that we have defined in our BME280
 
 -   Dropdown Field `FIELD`: Select "temperature", "pressure" or "humidity"
 
--   Text Input Field `PATH`: For the NuttX Path of our BME280 Sensor, defaults to "/dev/sensor/sensor_baro0"
+-   Text Input Field `PATH`: For the NuttX Path of our BME280 Sensor, defaults to "/dev/uorb/sensor_baro0"
 
 This code goes into the JavaScript Module `Blockly.Zig.functions`. We'll build this module in the next section...
 
@@ -800,21 +800,21 @@ pub fn main() !void {
     const temperature = try sen.readSensor(  // Read BME280 Sensor
       c.struct_sensor_baro,       // Sensor Data Struct
       "temperature",              // Sensor Data Field
-      "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+      "/dev/uorb/sensor_baro0"  // Path of Sensor Device
     );
     debug("temperature={}", .{ temperature });
 
     const pressure = try sen.readSensor(  // Read BME280 Sensor
       c.struct_sensor_baro,       // Sensor Data Struct
       "pressure",                 // Sensor Data Field
-      "/dev/sensor/sensor_baro0"  // Path of Sensor Device
+      "/dev/uorb/sensor_baro0"  // Path of Sensor Device
     );
     debug("pressure={}", .{ pressure });
 
     const humidity = try sen.readSensor(  // Read BME280 Sensor
       c.struct_sensor_humi,       // Sensor Data Struct
       "humidity",                 // Sensor Data Field
-      "/dev/sensor/sensor_humi0"  // Path of Sensor Device
+      "/dev/uorb/sensor_humi0"  // Path of Sensor Device
     );
     debug("humidity={}", .{ humidity });
 
